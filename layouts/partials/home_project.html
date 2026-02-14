@@ -19,7 +19,11 @@
                 {{ end }}
                 {{ end }}
                 </div>
-                <div class="col align-self-end" style="text-align: right">
+                <div class="col-auto align-self-center">
+                    {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+                    <span style="font-size: small">{{ .Date.Format $dateFormat }}</span>
+                </div>
+                <div class="col-auto align-self-end" style="text-align: right">
                     {{ partial "status.html" . }}
                 </div>
             </div>
