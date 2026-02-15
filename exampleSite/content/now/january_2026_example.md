@@ -1,5 +1,5 @@
 ---
-title: "Now of January 2026"
+title: ""
 date: 2026-01-02
 lastmod: 2026-01-02
 draft: false

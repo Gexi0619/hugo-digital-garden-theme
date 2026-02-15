@@ -1,5 +1,5 @@
 ---
-title: "Now of July 2025"
+title: "A tough summer"
 date: 2025-07-01
 lastmod: 2025-07-01
 draft: false

@@ -11,28 +11,27 @@
 </div>
 
 <!-- Timeline -->
-<div class="container mb-5">
+<div class="container mb-5" style="max-width: 900px;">
     <div class="now-timeline">
         {{ range .Pages.ByDate.Reverse }}
         <div class="now-timeline-item">
-            <div class="now-timeline-dot"></div>
-            <div class="now-timeline-content card top-highlight">
-                <div class="card-body">
-                    <div class="row justify-content-between align-items-start">
-                        <div class="col">
-                            <span class="card-date">{{ .Date.Format "Jan 2, 2006" }}</span>
-                            <h5 class="card-title mt-2">{{ .Title }}</h5>
-                            <div class="serif now-timeline-text">{{ .Content | safeHTML }}</div>
-                        </div>
-                    </div>
-                    {{ with .Params.garden_tags }}
-                    <div class="mt-3">
-                        {{ range . }}
-                        <span class="badge tag-badge">{{ . }}</span>
-                        {{ end }}
-                    </div>
+            <div class="now-timeline-left">
+                <div class="now-timeline-date">
+                    {{ .Date.Format "Jan 2006" }}
+                </div>
+                {{ with .Params.garden_tags }}
+                <div class="now-timeline-tags">
+                    {{ range . }}
+                    <span class="badge tag-badge">{{ . }}</span>
                     {{ end }}
                 </div>
+                {{ end }}
+            </div>
+            <div class="now-timeline-center">
+                <div class="now-timeline-dot"></div>
+            </div>
+            <div class="now-timeline-right">
+                <div class="serif now-timeline-text">{{ .Content | safeHTML }}</div>
             </div>
         </div>
         {{ end }}
