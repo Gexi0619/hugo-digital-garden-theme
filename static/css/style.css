@@ -479,6 +479,14 @@ button.anchor {
 .now-timeline-text p:last-child {
   margin-bottom: 0;
 }
+.home-now-text {
+  font-size: 22px;
+  line-height: 1.8;
+  color: var(--grey);
+}
+.home-now-text p:last-child {
+  margin-bottom: 0;
+}
 @media (max-width: 768px) {
   .now-timeline-item {
     flex-direction: column;
