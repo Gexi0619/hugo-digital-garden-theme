@@ -393,3 +393,50 @@ button.anchor {
   border-radius: 5px;
   z-index: 1;
 }
+
+/********************* Now Timeline *********************/
+
+.now-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.now-timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--lighter-blue);
+}
+.now-timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+.now-timeline-dot {
+  position: absolute;
+  left: -34px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--blue);
+  border: 2px solid var(--white);
+  z-index: 1;
+}
+.now-timeline-content {
+  transition: 1s transform cubic-bezier(.155,1.105,.295,1.12), 1s box-shadow;
+}
+.now-timeline-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--grey);
+}
+@media (max-width: 768px) {
+  .now-timeline {
+    padding-left: 30px;
+  }
+  .now-timeline-dot {
+    left: -24px;
+  }
+}

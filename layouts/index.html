@@ -94,5 +94,29 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Now -->
+	<div class="container py-3">
+		<div class="row justify-content-between my-5">
+			<div class="col-lg-4">
+				{{ with .Site.GetPage "section" "now" }}
+				<div class="pb-4">
+					<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
+				</div>
+				{{ if .Summary }} <p class="subheading">{{ .Summary }}</p> {{ end }}
+				{{ end }}
+				<div class="row row-cols-1 g-4 mb-5">
+					{{ range ( where site.RegularPages "Section" "now" | first 1 ) }}
+					{{ partial "home_now.html" . }}
+					{{ end }}
+				</div>
+				{{ with .Site.GetPage "section" "now" }}
+				<div class="d-flex flex-row-reverse">
+					<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all updates</a>
+				</div>
+				{{ end }}
+			</div>
+		</div>
+	</div>
 </div>
 {{ end }}
