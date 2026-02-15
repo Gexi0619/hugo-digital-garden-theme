@@ -4,7 +4,7 @@ date: 2019-01-01
 lastmod: 2021-08-12
 draft: false
 garden_tags: ["bamboo", "food"]
-summary: " "
+summary: "This is an example of summary "
 status: "seeding"
 ---
 
