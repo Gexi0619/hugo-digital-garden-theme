@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<div class="page-wrapper">
+<div class="page-wrapper page-wrapper--narrow">
 
     <!-- Title and summary -->
     <div class="py-5">
@@ -40,7 +40,7 @@
     </div>
 
     <!-- Garden Post Cards -->
-    <div class="row row-cols-1 row-cols-2at375 row-cols-lg-3 row-cols-xl-4 g-4" id="blogposts">
+    <div class="row row-cols-1 g-4" id="blogposts">
         {{ range .Pages.ByPublishDate.Reverse }}
         {{ partial "card_garden.html" . }}
         {{ end }}

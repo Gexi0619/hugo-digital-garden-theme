@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <!-- Title and summary -->
-<div class="page-wrapper">
+<div class="page-wrapper page-wrapper--narrow">
     <div class="py-5">
         <h1 class="display-2 mb-4">{{ .Title }}</h1>
         <p class="bio fs-4 serif">{{ .Summary }}</p>
@@ -9,7 +9,7 @@
 </div>
 
 <!-- Timeline -->
-<div class="page-wrapper page-wrapper--medium mb-5">
+<div class="page-wrapper page-wrapper--narrow mb-5">
     <div class="now-timeline">
         {{ range .Pages.ByDate.Reverse }}
         <div class="now-timeline-item">
