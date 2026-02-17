@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<div class="mx-auto px-4" style="max-width: 640px;">
+<div class="page-wrapper page-wrapper--narrow">
 
 <div class="mt-5 pt-5 pb-1">
        	<h1 class="name display-1"><b>{{ .Site.Params.Name }}</b></h1>
@@ -41,7 +41,7 @@
 			<p class="subheading">{{ .Summary }}</p> 
 			{{ end }}
 			{{ end }}
-			<div class="row row-cols-2 g-4 mb-5" data-masonry='{"percentPosition": true }'>
+			<div class="row row-cols-1 row-cols-2at375 g-4 mb-5" data-masonry='{"percentPosition": true }'>
 				{{ range ( where site.RegularPages "Section" "projects" | first 6 ) }}
 				{{ partial "home_project.html" . }}
 				{{end}}
@@ -55,63 +55,59 @@
 	</div>
 
 	<!-- Library -->
-	<div class="container py-3">
-		<div class="row my-5">
-			<div class="col-12">
-				{{ with .Site.GetPage "section" "library" }}
-				<div class="pb-4">
-					<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
-				</div>
-				{{ if .Summary }} <p class="subheading">{{ .Summary }}</p> {{ end }}
-				<div class="d-flex">
-					<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all books</a>
-				</div>
-				{{ end }}
+	<div class="my-5">
+		<div class="col-12">
+			{{ with .Site.GetPage "section" "library" }}
+			<div class="pb-4">
+				<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
 			</div>
-			<div class="col-12 mt-3">
-				<div class="row row-cols-1 g-4 mb-5">
-					{{ range ( where site.RegularPages "Section" "library" | first 3 ) }}
-					<div class="col">
-						<div class="card">
-							{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
-							{{ $img = $img.Fit "350x500" }}
-							{{ with $img }}
-							<img src="{{ .Permalink }}" alt="{{ $.Title }}" class="card-img-top">
-							{{ end }}
-							<div class="card-body">
-								<h5 class="card-title">{{ .Title }}</h5>
-								<p class="card-text">
-									<figcaption class="blockquote-footer">{{ .Params.Author}}</figcaption>
-								</p>
-								<a href="{{ .Permalink }}" class="stretched-link"></a>
-							</div>
-						</div>  
-					</div>
-					{{end}}
+			{{ if .Summary }} <p class="subheading">{{ .Summary }}</p> {{ end }}
+			<div class="d-flex">
+				<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all books</a>
+			</div>
+			{{ end }}
+		</div>
+		<div class="col-12 mt-3">
+			<div class="row row-cols-1 g-4 mb-5">
+				{{ range ( where site.RegularPages "Section" "library" | first 3 ) }}
+				<div class="col">
+					<div class="card">
+						{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+						{{ $img = $img.Fit "350x500" }}
+						{{ with $img }}
+						<img src="{{ .Permalink }}" alt="{{ $.Title }}" class="card-img-top">
+						{{ end }}
+						<div class="card-body">
+							<h5 class="card-title">{{ .Title }}</h5>
+							<p class="card-text">
+								<figcaption class="blockquote-footer">{{ .Params.Author}}</figcaption>
+							</p>
+							<a href="{{ .Permalink }}" class="stretched-link"></a>
+						</div>
+					</div>  
 				</div>
+				{{end}}
 			</div>
 		</div>
 	</div>
 
 	<!-- Now -->
-	<div class="container py-3">
-		<div class="my-5">
-			{{ with .Site.GetPage "section" "now" }}
-			<div class="pb-4">
-				<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
-			</div>
-			{{ end }}
-			<div class="mb-5">
-				{{ range ( where site.RegularPages "Section" "now" | first 1 ) }}
-				{{ partial "home_now.html" . }}
-				{{ end }}
-			</div>
-			{{ with .Site.GetPage "section" "now" }}
-			<div class="d-flex flex-row-reverse">
-				<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all nows</a>
-			</div>
+	<div class="my-5">
+		{{ with .Site.GetPage "section" "now" }}
+		<div class="pb-4">
+			<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
+		</div>
+		{{ end }}
+		<div class="mb-5">
+			{{ range ( where site.RegularPages "Section" "now" | first 1 ) }}
+			{{ partial "home_now.html" . }}
 			{{ end }}
 		</div>
+		{{ with .Site.GetPage "section" "now" }}
+		<div class="d-flex flex-row-reverse">
+			<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all nows</a>
+		</div>
+		{{ end }}
 	</div>
 </div>
 </div>

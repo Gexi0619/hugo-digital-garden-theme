@@ -1,17 +1,15 @@
 {{ define "main" }}
 
 <!-- Title and summary -->
-<div class="container">
-    <div class="py-5 rounded-3">
-        <div class="container-fluid py-2">
-            <h1 class="display-2 mb-4">{{ .Title }}</h1>
-            <p class="bio col-md-8 fs-4 serif">{{ .Summary }}</p>
-        </div>
+<div class="page-wrapper">
+    <div class="py-5">
+        <h1 class="display-2 mb-4">{{ .Title }}</h1>
+        <p class="bio fs-4 serif">{{ .Summary }}</p>
     </div>
 </div>
 
 <!-- Timeline -->
-<div class="container mb-5" style="max-width: 900px;">
+<div class="page-wrapper page-wrapper--medium mb-5">
     <div class="now-timeline">
         {{ range .Pages.ByDate.Reverse }}
         <div class="now-timeline-item">
