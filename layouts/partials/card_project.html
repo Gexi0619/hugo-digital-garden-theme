@@ -12,13 +12,25 @@
         {{ end }}
         {{ end }}
         <div class="card-body">
-            {{ if .Summary }} 
-            <h4 class="card-title">{{ .Title }}</h4>
-            <p class="card-text pb-3">{{ .Summary }}.</p>
-            {{ else }}
-            <h4 class="card-title pb-3">{{ .Title }}</h4>
-            {{ end }}
+            <h5 class="card-title">{{ .Title }}</h5>
+            <p class="card-text">{{ .Summary }}</p>
             <a href="{{ .Permalink }}" class="stretched-link"></a>
+            <div class="row justify-content-between" style="flex-wrap: wrap;">
+                <div class="col-12 mb-1">
+                {{ with .Params.project_tags }}
+                {{ range . }}
+                <span class="badge tag-badge">{{ . }}</span>
+                {{ end }}
+                {{ end }}
+                </div>
+                <div class="col-auto align-self-center">
+                    {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+                    <span style="font-size: small">{{ .Date.Format $dateFormat }}</span>
+                </div>
+                <div class="col-auto align-self-end" style="text-align: right">
+                    {{ partial "status.html" . }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
