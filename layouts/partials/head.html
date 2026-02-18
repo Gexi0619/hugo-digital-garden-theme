@@ -12,9 +12,19 @@
     </script>
     {{ end }}
     <!-- Enable Google Fonts -->
+    {{ $titleFont := .Site.Params.fonts.title | default "Inter" }}
+    {{ $titleType := .Site.Params.fonts.titleType | default "sans-serif" }}
+    {{ $titleWeights := .Site.Params.fonts.titleWeights | default "300;400;500;600;700;800" }}
+    {{ $bodyFont := .Site.Params.fonts.body | default "Lora" }}
+    {{ $bodyType := .Site.Params.fonts.bodyType | default "serif" }}
+    {{ $bodyWeights := .Site.Params.fonts.bodyWeights | default "400;500;600;700" }}
+    {{ $titleFontURL := replace $titleFont " " "+" }}
+    {{ $bodyFontURL := replace $bodyFont " " "+" }}
+    {{ $titleWeightsParam := replace $titleWeights ";" "," }}
+    {{ $bodyWeightsParam := replace $bodyWeights ";" "," }}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family={{ $titleFontURL }}:wght@{{ $titleWeightsParam }}&family={{ $bodyFontURL }}:ital,wght@0,{{ $bodyWeightsParam }};1,{{ $bodyWeightsParam }}&display=swap" rel="stylesheet">
     <!-- CSS Styles (including Bootstrap 5 and FontAwesome 6) -->
     {{ $cacheBust := now.Unix }}
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css?v={{ $cacheBust }}">
@@ -22,6 +32,13 @@
     <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css?v={{ $cacheBust }}">
     <link rel="stylesheet" type="text/css" href="/css/style.css?v={{ $cacheBust }}">
     <link rel="stylesheet" type="text/css" href="/css/my_style.css?v={{ $cacheBust }}">
+    <!-- Override CSS font variables from config -->
+    <style>
+      :root {
+        --title: '{{ $titleFont }}', {{ $titleType }};
+        --body: '{{ $bodyFont }}', {{ $bodyType }};
+      }
+    </style>
     <!-- Site Title -->
     {{ $title := print .Site.Title " | " .Title }}
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}

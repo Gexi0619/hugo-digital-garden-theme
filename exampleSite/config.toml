@@ -56,6 +56,15 @@ copyright = "Nigalya Ponya ©"
     weight = 5
 
 
+[params.fonts]
+  title = "Inter"
+  titleType = "sans-serif"
+  titleWeights = "300;400;500;600;700;800"
+  body = "Lora"
+  bodyType = "serif"
+  bodyWeights = "400;500;600;700"
+
+
 [taxonomies]
   garden_tags = 'garden_tags'
   project_tags = 'project_tags'

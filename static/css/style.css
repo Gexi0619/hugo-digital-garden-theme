@@ -7,9 +7,8 @@
     --grey: #454963;
     --white: #fff;
     --offwhite: #fafafa;
-    --title: 'Mulish', sans-serif;
-    --summary: 'Frank Ruhl Libre', serif;
-    --headings: 'Encode Sans Semi Condensed', sans-serif;
+    --title: 'Inter', sans-serif;
+    --body: 'Lora', serif;
     --h5: 0.83rem;
     --h6: 0.67rem;
 }
@@ -17,7 +16,7 @@
 /********************* General *********************/
 
 body {
-  font-family: var(--summary);
+  font-family: var(--body);
   font-weight: 300;
   color: var(--dark);
   background-color: var(--white);
@@ -38,7 +37,7 @@ strong {
 }
 
 table {
-  font-family: var(--summary);
+  font-family: var(--body);
 }
 thead {
   background-color:whitesmoke;
@@ -58,7 +57,7 @@ table td{
 }
 
 .serif {
-  font-family: var(--summary);
+  font-family: var(--body);
   color: var(--grey);
 }
 
@@ -69,7 +68,7 @@ table td{
   transition: 1s transform cubic-bezier(.155,1.105,.295,1.12),1s box-shadow,1s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
 /* padding: 14px 80px 18px 36px; */
   cursor: pointer;
-  font-family: var(--headings);
+  font-family: var(--title);
 }
 .card-title {
   font-weight: 600;
@@ -135,7 +134,7 @@ table td{
 }
 
 blockquote {
-  font-family: var(--summary);
+  font-family: var(--body);
   padding: 10px 10px 1px 30px;
   background-color:ghostwhite;
   border-left-width: 5px;
@@ -216,12 +215,12 @@ code {
 .bio {
   max-width: 750px;
   font-weight: 200;
-  font-family: var(--summary);
+  font-family: var(--body);
 }
 .heading {
     font-weight: 400;
     color: var(--grey);
-    font-family: var(--headings);
+    font-family: var(--title);
     text-decoration: none;
 }
 .heading:hover {
@@ -236,7 +235,7 @@ code {
 }
 .tag-badge {
   background-color: var(--blue);
-  font-family: var(--headings);
+  font-family: var(--title);
   font-weight: 400;
 }
 .see-all {
@@ -322,7 +321,7 @@ a:hover {
   text-decoration-color: var(--blue);
 }
 .main-content h2, h3, h4 {
-  font-family: var(--headings);
+  font-family: var(--title);
   font-weight: bold;
   color: var(--dark);
   padding-top: 10px;
@@ -481,7 +480,7 @@ button.anchor {
   border-bottom: none;
 }
 .now-timeline-date {
-  font-family: var(--headings);
+  font-family: var(--title);
   font-weight: 600;
   font-size: 14px;
   color: var(--grey);
