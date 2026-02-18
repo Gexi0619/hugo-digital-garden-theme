@@ -5,12 +5,31 @@
 <div class="mt-5 pt-5 pb-1">
        	<h1 class="name display-1"><b>{{ .Site.Params.Name }}</b></h1>
 </div>
-<div class="mb-5 py-4">
+<div class="mb-3 py-2">
         <h2 class="bio lh-base fs-1 serif">{{ .Site.Params.Description }}</h2>
 </div>
 
 <div class="py-3">
-	<div class="row my-5">
+	<!-- Now -->
+	<div class="mb-3">
+		{{ with .Site.GetPage "section" "now" }}
+		<div class="pb-4">
+			<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
+		</div>
+		{{ end }}
+		<div class="mb-3">
+			{{ range ( where site.RegularPages "Section" "now" | first 1 ) }}
+			{{ partial "home_now.html" . }}
+			{{ end }}
+		</div>
+		{{ with .Site.GetPage "section" "now" }}
+		<div class="d-flex flex-row-reverse">
+			<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all nows</a>
+		</div>
+		{{ end }}
+	</div>
+
+	<div class="row my-3">
 		<!-- Garden / Blog -->
 		<div class="col-12">
 			{{ with .Site.GetPage "section" "garden" }}
@@ -19,7 +38,7 @@
           	</div>      
 			{{ if .Summary }} <p class="subheading">{{ .Summary }}</p> {{ end }}
 			{{ end }}
-			<div class="row row-cols-1 g-4 mb-5">
+			<div class="row row-cols-1 g-4 mb-3">
 				{{ range ( where site.RegularPages "Section" "garden" | first 6 ) }}
 				{{ partial "home_garden.html" . }}
 				{{ end }}
@@ -32,7 +51,7 @@
 		</div>
     	
 		<!-- Projects -->
-		<div class="col-12 mt-5">
+		<div class="col-12 mt-3">
 			{{ with .Site.GetPage "section" "projects" }}
 			<div class="pb-4">
 				<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -41,7 +60,7 @@
 			<p class="subheading">{{ .Summary }}</p> 
 			{{ end }}
 			{{ end }}
-			<div class="row row-cols-1 row-cols-2at375 g-4 mb-5" data-masonry='{"percentPosition": true }'>
+			<div class="row row-cols-1 row-cols-2at375 g-4 mb-3" data-masonry='{"percentPosition": true }'>
 				{{ range ( where site.RegularPages "Section" "projects" | first 6 ) }}
 				{{ partial "home_project.html" . }}
 				{{end}}
@@ -55,20 +74,17 @@
 	</div>
 
 	<!-- Library -->
-	<div class="my-5">
+	<div class="my-3">
 		<div class="col-12">
 			{{ with .Site.GetPage "section" "library" }}
 			<div class="pb-4">
 				<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
 			</div>
 			{{ if .Summary }} <p class="subheading">{{ .Summary }}</p> {{ end }}
-			<div class="d-flex">
-				<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all books</a>
-			</div>
 			{{ end }}
 		</div>
 		<div class="col-12 mt-3">
-			<div class="row row-cols-1 row-cols-2at375 g-4 mb-5">
+			<div class="row row-cols-1 row-cols-2at375 g-4 mb-3">
 				{{ range ( where site.RegularPages "Section" "library" | first 3 ) }}
 				<div class="col">
 					<div class="card">
@@ -89,23 +105,9 @@
 				{{end}}
 			</div>
 		</div>
-	</div>
-
-	<!-- Now -->
-	<div class="my-5">
-		{{ with .Site.GetPage "section" "now" }}
-		<div class="pb-4">
-			<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
-		</div>
-		{{ end }}
-		<div class="mb-5">
-			{{ range ( where site.RegularPages "Section" "now" | first 1 ) }}
-			{{ partial "home_now.html" . }}
-			{{ end }}
-		</div>
-		{{ with .Site.GetPage "section" "now" }}
+		{{ with .Site.GetPage "section" "library" }}
 		<div class="d-flex flex-row-reverse">
-			<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all nows</a>
+			<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all books</a>
 		</div>
 		{{ end }}
 	</div>
