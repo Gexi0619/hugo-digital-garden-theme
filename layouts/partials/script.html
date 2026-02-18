@@ -1,8 +1,9 @@
-<script src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script src="/js/isotope.pkgd.min.js"></script>
+{{ $cacheBust := now.Unix }}
+<script src="/js/bootstrap.min.js?v={{ $cacheBust }}"></script>
+<script type="text/javascript" src="/js/jquery.min.js?v={{ $cacheBust }}"></script>
+<script src="/js/isotope.pkgd.min.js?v={{ $cacheBust }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-<script src="/js/dark.js"></script>
+<script src="/js/dark.js?v={{ $cacheBust }}"></script>
 <script>
 // set the default theme
 {{ if .Site.Params.darkModeDefault }}
@@ -15,6 +16,6 @@ var savedTheme = localStorage.getItem("dark-mode-storage") || "light"
 setTheme(savedTheme);
 {{ end }}
 </script>
-<script src="/js/isotope.js"></script>
-<script src="/js/mermaid.min.js"></script>
+<script src="/js/isotope.js?v={{ $cacheBust }}"></script>
+<script src="/js/mermaid.min.js?v={{ $cacheBust }}"></script>
 <script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
