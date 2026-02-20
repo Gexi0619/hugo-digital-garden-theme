@@ -17,9 +17,12 @@
 
 body {
   font-family: var(--body);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--dark);
   background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 #content {
@@ -189,7 +192,7 @@ code {
 }
 .navbar-nav .nav-item .nav-link {
     color: var(--grey);
-    font-weight: 300;
+    font-weight: 400;
     transition: color 1s;
     display: block;
     position: relative;
@@ -226,7 +229,7 @@ code {
 
 .bio {
   max-width: 750px;
-  font-weight: 200;
+  font-weight: 400;
   font-family: var(--body);
 }
 .heading {
@@ -270,7 +273,7 @@ code {
 
 /* ---- button-filters ---- */
 .button {
-  font-weight: 200;
+  font-weight: 400;
   font-family: var(--body);
   display: inline-flex;
   align-items: center;
@@ -339,7 +342,7 @@ code {
 }
 
 .main-content {
-  line-height: 40px;
+  line-height: 1.8;
   font-size: 22px;
 }
 a {

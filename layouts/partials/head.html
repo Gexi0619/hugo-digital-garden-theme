@@ -14,17 +14,21 @@
     <!-- Enable Google Fonts -->
     {{ $titleFont := .Site.Params.fonts.title | default "Inter" }}
     {{ $titleType := .Site.Params.fonts.titleType | default "sans-serif" }}
-    {{ $titleWeights := .Site.Params.fonts.titleWeights | default "300;400;500;600;700;800" }}
+    {{ $titleWeights := .Site.Params.fonts.titleWeights | default "400;500;600;700;800" }}
     {{ $bodyFont := .Site.Params.fonts.body | default "Lora" }}
     {{ $bodyType := .Site.Params.fonts.bodyType | default "serif" }}
-    {{ $bodyWeights := .Site.Params.fonts.bodyWeights | default "400;500;600;700" }}
+    {{ $bodyWeights := .Site.Params.fonts.bodyWeights | default "400;600" }}
     {{ $titleFontURL := replace $titleFont " " "+" }}
     {{ $bodyFontURL := replace $bodyFont " " "+" }}
-    {{ $titleWeightsParam := replace $titleWeights ";" "," }}
-    {{ $bodyWeightsParam := replace $bodyWeights ";" "," }}
+    {{/* Build body font ital,wght pairs: 0,400;0,600;1,400;1,600 */}}
+    {{ $bodyWeightsList := split $bodyWeights ";" }}
+    {{ $bodyPairs := slice }}
+    {{ range $bodyWeightsList }}{{ $bodyPairs = $bodyPairs | append (printf "0,%s" .) }}{{ end }}
+    {{ range $bodyWeightsList }}{{ $bodyPairs = $bodyPairs | append (printf "1,%s" .) }}{{ end }}
+    {{ $bodyWeightsParam := delimit $bodyPairs ";" }}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family={{ $titleFontURL }}:wght@{{ $titleWeightsParam }}&family={{ $bodyFontURL }}:ital,wght@0,{{ $bodyWeightsParam }};1,{{ $bodyWeightsParam }}&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family={{ $titleFontURL }}:wght@{{ $titleWeights }}&family={{ $bodyFontURL }}:ital,wght@{{ $bodyWeightsParam }}&display=swap" rel="stylesheet">
     <!-- CSS Styles (including Bootstrap 5 and FontAwesome 6) -->
     {{ $cacheBust := now.Unix }}
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css?v={{ $cacheBust }}">
