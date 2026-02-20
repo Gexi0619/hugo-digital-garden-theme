@@ -172,6 +172,21 @@ code {
   color: var(--dark);
   font-family: var(--title);
 }
+
+.navbar .container {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (max-width: 576px) {
+  .navbar .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
 .navbar-nav .nav-item .nav-link {
     color: var(--grey);
     font-weight: 300;
@@ -347,6 +362,23 @@ a:hover {
 }
 
 /********************* Footer *********************/
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.footer-social-wrapper {
+  display: flex;
+  gap: 0;
+}
+
+.footer-copyright {
+  margin: 0;
+}
 
 .footer {
   font-family: var(--title);

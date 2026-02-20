@@ -25,7 +25,7 @@
     </div>
 
     <!-- Book Cards -->
-    <div class="row row-cols-1 row-cols-2at375 g-4" id="blogposts">
+    <div class="row row-cols-1 row-cols-2at375 g-4 mb-5" id="blogposts">
         {{ range .Pages.ByPublishDate.Reverse }}
         {{ partial "card_book.html" . }}
         {{ end }}
