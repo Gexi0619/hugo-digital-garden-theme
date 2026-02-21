@@ -11,15 +11,15 @@
 
 <div class="py-3">
 	{{- $defaultSections := slice
-		(dict "name" "now" "weight" 1 "enable" true)
-		(dict "name" "garden" "weight" 2 "enable" true)
-		(dict "name" "projects" "weight" 3 "enable" true)
-		(dict "name" "library" "weight" 4 "enable" true)
+		(dict "name" "now" "weight" 1 "enable" true "limit" 1)
+		(dict "name" "garden" "weight" 2 "enable" true "limit" 6)
+		(dict "name" "projects" "weight" 3 "enable" true "limit" 6)
+		(dict "name" "library" "weight" 4 "enable" true "limit" 3)
 	-}}
 	{{- $sections := default $defaultSections .Site.Params.sections -}}
 	{{ range sort $sections "weight" }}
 		{{ if .enable }}
-			{{ partial (printf "home_section_%s.html" .name) $ }}
+			{{ partial (printf "home_section_%s.html" .name) (dict "ctx" $ "limit" .limit) }}
 		{{ end }}
 	{{ end }}
 </div>

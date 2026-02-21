@@ -16,21 +16,25 @@ copyright = "Nigalya Ponya ©"
     name = "now"
     weight = 1
     enable = true
+    limit = 1
 
   [[params.sections]]
     name = "garden"
     weight = 2
     enable = true
+    limit = 2
 
   [[params.sections]]
     name = "projects"
     weight = 3
     enable = true
+    limit = 2
 
   [[params.sections]]
     name = "library"
     weight = 4
     enable = false
+    limit = 3
 
   [[params.social]]
     name = "Twitter"

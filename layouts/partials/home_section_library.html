@@ -10,7 +10,7 @@
 	</div>
 	<div class="col-12 mt-3">
 		<div class="row row-cols-1 row-cols-2at375 g-4 mb-3">
-			{{ range ( where site.RegularPages "Section" "library" | first 3 ) }}
+			{{ range ( where .ctx.Site.RegularPages "Section" "library" | first .limit ) }}
 			<div class="col">
 				<div class="card">
 					{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
