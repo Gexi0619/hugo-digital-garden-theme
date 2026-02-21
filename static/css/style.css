@@ -658,6 +658,57 @@ button.anchor {
   }
 }
 
+/********************* Prev/Next Navigation *********************/
+
+.prev-next-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+}
+
+.prev-next-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.prev-next-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--grey);
+  border: 1px solid #eee;
+  font-family: var(--title);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.prev-next-item a:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+.prev-next-arrow {
+  flex-shrink: 0;
+}
+
+.prev-next-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.prev-next-next {
+  text-align: right;
+}
+
+
 /********************* Library Single *********************/
 
 .library-single {
