@@ -1,6 +1,7 @@
 {{ define "main" }}
 
 <div class="page-wrapper page-wrapper--narrow">
+    {{ partial "breadcrumb.html" . }}
     <div class="py-4">
         <h1 class="display-2 mb-4 text-center">{{ .Title }}</h1>
         {{ with .Summary }}
