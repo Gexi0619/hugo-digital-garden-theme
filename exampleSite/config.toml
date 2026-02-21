@@ -12,6 +12,26 @@ copyright = "Nigalya Ponya ©"
   initials = "NP"
   googleAnalytics = ""
 
+  [[params.sections]]
+    name = "now"
+    weight = 1
+    enable = true
+
+  [[params.sections]]
+    name = "garden"
+    weight = 2
+    enable = true
+
+  [[params.sections]]
+    name = "projects"
+    weight = 3
+    enable = true
+
+  [[params.sections]]
+    name = "library"
+    weight = 4
+    enable = false
+
   [[params.social]]
     name = "Twitter"
     link = "#"

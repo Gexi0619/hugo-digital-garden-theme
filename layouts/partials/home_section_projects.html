@@ -1,0 +1,23 @@
+<!-- Projects -->
+<div class="row my-3">
+	<div class="col-12 mt-3">
+		{{ with .Site.GetPage "section" "projects" }}
+		<div class="pb-4">
+			<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
+		</div>
+		{{ if .Summary }}
+		<p class="subheading">{{ .Summary }}</p>
+		{{ end }}
+		{{ end }}
+		<div class="row row-cols-1 row-cols-2at375 g-4 mb-3" data-masonry='{"percentPosition": true }'>
+			{{ range ( where site.RegularPages "Section" "projects" | first 6 ) }}
+			{{ partial "home_project.html" . }}
+			{{end}}
+		</div>
+		{{ with .Site.GetPage "section" "projects" }}
+		<div class="d-flex flex-row-reverse">
+			<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all projects</a>
+		</div>
+		{{ end }}
+	</div>
+</div>
