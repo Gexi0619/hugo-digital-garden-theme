@@ -57,13 +57,13 @@ copyright = "Nigalya Ponya ©"
 
 
 [params.fonts]
-  title = "Literata"
+  title = "Noto Serif SC"
   titleType = "serif"
-  titleWeights = "400;500;600"
+  titleWeights = "400;700"
 
-  body = "Inter"
-  bodyType = "sans"
-  bodyWeights = "400"
+  body = "Noto Sans SC"
+  bodyType = "sans-serif"
+  bodyWeights = "300;400;700"
 
 
 [taxonomies]
