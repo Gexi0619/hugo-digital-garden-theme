@@ -166,7 +166,6 @@ code {
 .nav-link:hover::after,
 .nav-link:focus::after {
   opacity: 1;
-  transform: translate3d(0, 0.2em, 0);
 }
 
 /********************* Home - Hero *********************/
@@ -222,7 +221,6 @@ code {
   border-bottom-color: var(--blue);
   color: var(--blue);
   transition: 0.6s;
-  transform: translate(0, 5px);
 }
 
 /********************* Home - Now *********************/
@@ -248,18 +246,12 @@ code {
 .card {
   border-radius: 4px;
   background: var(--offwhite);
-  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-  transition: 1s transform cubic-bezier(.155,1.105,.295,1.12), 1s box-shadow, 1s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  box-shadow: 0 3px 6px rgba(0,0,0,.06), 0 0 3px rgba(0,0,0,.03);
   cursor: pointer;
   font-family: var(--title);
 }
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-}
-.top-highlight:hover {
-  border-top-color: var(--blue);
-  border-top-width: 2px;
+  box-shadow: 0 10px 15px rgba(0,0,0,.10), 0 3px 8px rgba(0,0,0,.06);
 }
 
 .card-title {
@@ -428,7 +420,6 @@ code {
   text-decoration: underline;
   color: var(--blue);
   transition: 0.6s;
-  transform: translate(0, 5px);
 }
 
 .btn-link-title {
