@@ -32,7 +32,7 @@ body {
 }
 
 strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 a {
@@ -382,14 +382,19 @@ code {
   font-weight: 400;
   line-height: 1.8;
   margin-top: 0.5rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
+.main-content h1,
 .main-content h2,
 .main-content h3,
-.main-content h4 {
-  font-family: var(--title);
-  font-weight: bold;
-  color: var(--dark);
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  font-family: var(--body);
+  font-weight: 500;
+  color: var(--grey);
   padding-top: 10px;
   padding-bottom: 10px;
 }
