@@ -117,4 +117,4 @@ copyright = "Nigalya Ponya ©"
     typographer = true
   [markup.highlight]
     # Choose from https://xyproto.github.io/splash/docs/all.html
-    style = 'monokailight'
+    style = 'rose-pine-moon'

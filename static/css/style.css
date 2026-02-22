@@ -402,10 +402,12 @@ code {
 .highlight {
   font-size: medium;
   line-height: normal;
-  border-left-style: solid;
-  border-left-width: 5px;
-  padding-left: 10px;
-  border-color: var(--dark);
+}
+
+.highlight pre {
+  padding: 1rem 1.25rem;
+  border-radius: 3px;
+  overflow-x: auto;
 }
 
 .btn-link {
