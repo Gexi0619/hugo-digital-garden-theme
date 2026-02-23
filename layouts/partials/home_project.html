@@ -4,7 +4,7 @@
         {{ if $img }}
         {{ $img = $img.Fit "500x500" }}
         {{ with $img }}
-        <img src="{{ .Permalink }}" alt="{{ $.Title }}" class="card-img-top p-5">
+        <img src="{{ .Permalink }}" alt="{{ $.Title }}" class="card-img-top p-3">
         {{ end }}
         {{ end }}
         <div class="card-body">
