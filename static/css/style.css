@@ -220,6 +220,19 @@ nav[aria-label="breadcrumb"] {
   color: var(--blue);
 }
 
+.navbar-brand img {
+  transition: filter 0.3s;
+  cursor: pointer;
+}
+
+.navbar-brand img:hover {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+}
+
+.navbar-brand img:active {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
 /********************* Home - Hero *********************/
 
 .home-hero-title {

@@ -1,11 +1,19 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ .Site.BaseURL }}">
-            {{ if .Site.Params.Initials }}
-            <b style="font-weight: 800;">{{ .Site.Params.Initials }}</b>
+            {{- with resources.Get "favicon.svg" -}}
+            <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" height="28">
+            {{- else -}}
+            {{- with resources.Get "favicon.png" -}}
+            <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" height="28">
+            {{- else -}}
+            {{ if $.Site.Params.Initials }}
+            <b style="font-weight: 800;">{{ $.Site.Params.Initials }}</b>
             {{ else }}
-            <b style="font-weight: 800;">{{ .Site.Params.Name }}</b>
+            <b style="font-weight: 800;">{{ $.Site.Params.Name }}</b>
             {{ end }}
+            {{- end -}}
+            {{- end -}}
         </a>
         <ul class="navbar-nav ms-auto flex-row flex-wrap">
         {{- $currentURL := .RelPermalink -}}
