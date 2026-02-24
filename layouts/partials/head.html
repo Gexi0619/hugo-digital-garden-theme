@@ -43,6 +43,16 @@
         --body: '{{ $bodyFont }}', {{ $bodyType }};
       }
     </style>
+    <!-- Favicon -->
+    {{ with resources.Get "favicon.svg" }}
+    <link rel="icon" type="image/svg+xml" href="{{ .RelPermalink }}">
+    {{ else }}
+    {{ with resources.Get "favicon.png" }}
+    <link rel="icon" type="image/png" href="{{ .RelPermalink }}">
+    {{ else }}
+    <link rel="icon" href="/favicon.ico">
+    {{ end }}
+    {{ end }}
     <!-- Site Title -->
     {{ $title := print .Site.Title " | " .Title }}
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
