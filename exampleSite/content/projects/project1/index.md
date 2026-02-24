@@ -5,6 +5,7 @@ draft: false
 project_tags: ["markdown"]
 status: "evergreen"
 weight: 2
+ping: true
 summary: "Example of markdown syntax you can use to edit your content"
 links:
     external_link:

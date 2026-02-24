@@ -7,6 +7,7 @@ project_tags: ["technology", "idols"]
 status: "dormant"
 summary: "丝芭小偶像口袋聊天历史查询、录播带弹幕播放器"
 weight: 1
+ping: false
 links:
     external_link:
         text: "MSG48网站"

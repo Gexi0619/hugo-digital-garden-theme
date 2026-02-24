@@ -19,7 +19,21 @@
 	{{ if .Summary }}<p class="subheading">{{ .Summary }}</p>{{ end }}
 	{{- end -}}
 
-	{{- $pages := where $ctx.Site.RegularPages "Section" $name | first $limit -}}
+	{{- $allPages := where $ctx.Site.RegularPages "Section" $name -}}
+	{{- $pingPages := (where $allPages "Params.ping" true).ByWeight -}}
+	{{- $pages := slice -}}
+	{{- if gt (len $pingPages) 0 -}}
+		{{- $pingCount := len $pingPages -}}
+		{{- if ge $pingCount $limit -}}
+			{{- $pages = first $limit $pingPages -}}
+		{{- else -}}
+			{{- $nonPingPages := (where $allPages "Params.ping" "ne" true).ByWeight -}}
+			{{- $remaining := sub $limit $pingCount -}}
+			{{- $pages = $pingPages | append (first $remaining $nonPingPages) -}}
+		{{- end -}}
+	{{- else -}}
+		{{- $pages = $allPages.ByLastmod.Reverse | first $limit -}}
+	{{- end -}}
 
 	{{ if eq $display "list" }}
 		{{ partial "display_list.html" (dict "pages" $pages "show" $show) }}
