@@ -1,7 +1,16 @@
-{{- /* List display mode — single column cards with title, summary, date, status */ -}}
-<div class="row row-cols-1 g-4">
+{{- /* List display mode — single column cards with title, summary, date, status
+     Receives: dict "pages" $pages "tags_key" "garden_tags" (optional, for isotope filtering)
+*/ -}}
+{{- $tagsKey := .tags_key -}}
+<div class="row row-cols-1 g-4{{ with .id }} mb-5" id="{{ . }}{{ end }}">
 	{{ range .pages }}
-	<div class="col">
+	{{- $isoClasses := "" -}}
+	{{- if $tagsKey -}}
+		{{- range index .Params $tagsKey -}}
+			{{- $isoClasses = printf "%s js-iso-%s" $isoClasses . -}}
+		{{- end -}}
+	{{- end -}}
+	<div class='col{{ $isoClasses }}'>
 		<div class="card h-100 top-highlight">
 			<div class="card-body">
 				<div class="row justify-content-between">

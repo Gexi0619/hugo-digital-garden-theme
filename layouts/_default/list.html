@@ -1,20 +1,66 @@
 {{ define "main" }}
 
+{{- /* Look up this section's config from params.sections */ -}}
+{{- $sectionName := .Section -}}
+{{- $sectionCfg := dict -}}
+{{- range .Site.Params.sections -}}
+	{{- if eq .name $sectionName -}}
+		{{- $sectionCfg = . -}}
+	{{- end -}}
+{{- end -}}
+
+{{- $listDisplay := $sectionCfg.list_display | default $sectionCfg.display -}}
+{{- $tagsKey := $sectionCfg.tags -}}
+
 <div class="page-wrapper page-wrapper--narrow">
+
+    <!-- Title and summary -->
     <div class="pt-5 pb-3">
         <h1 class="display-2 mb-4">{{ .Title }} <span class="section-count">({{ len .RegularPages }})</span></h1>
         <p class="bio fs-4 body-text">{{ .Summary }}</p>
     </div>
 
-    {{ range .Pages.ByPublishDate.Reverse }}
-    <p>
-        <h3><a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ partial "metadata.html" . }}
-        <a class="summary" href="{{ .RelPermalink }}">
-            <p>{{ .Summary }}</p>
-        </a>
-    </p>
+    {{- /* Filter Buttons — only shown when a tags taxonomy is configured */ -}}
+    {{ if $tagsKey }}
+    {{ $taxonomy := index .Site.Taxonomies $tagsKey }}
+    {{ if $taxonomy }}
+    <div class="mb-4">
+        <div class="btn-toolbar mb-2 bio" role="toolbar" aria-label="Toolbar with button groups">
+            <div id="filters" class="button-group">
+                <i class="fas fa-filter"></i>
+                {{ range $name, $_ := $taxonomy }}
+                {{ $btnid := $name | printf ".js-iso-%s"}}
+                <input type="checkbox" class="btn-check" id="{{ $btnid }}" autocomplete="off" data-filter="{{ $btnid }}">
+                <label class="button" for="{{ $btnid }}">{{ $name }}</label>
+                {{ end }}
+            </div>
+        </div>
+    </div>
     {{ end }}
+    {{ end }}
+
+    {{- /* Render pages using the configured display mode */ -}}
+    {{- $pages := .Pages.ByPublishDate.Reverse -}}
+
+    {{ if eq $listDisplay "list" }}
+        {{ partial "home_display_list.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts") }}
+    {{ else if eq $listDisplay "grid" }}
+        {{ partial "home_display_grid.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts") }}
+    {{ else if eq $listDisplay "full" }}
+        {{ partial "home_display_full.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts") }}
+    {{ else }}
+        {{- /* Fallback: simple list for sections without display config */ -}}
+        {{ range $pages }}
+        <p>
+            <h3><a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{ partial "metadata.html" . }}
+            <a class="summary" href="{{ .RelPermalink }}">
+                <p>{{ .Summary }}</p>
+            </a>
+        </p>
+        {{ end }}
+    {{ end }}
+
 </div>
 
 {{ end }}

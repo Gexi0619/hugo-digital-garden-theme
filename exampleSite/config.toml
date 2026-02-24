@@ -17,7 +17,9 @@ copyright = "Nigalya Ponya ©"
     weight = 1
     enable = true
     limit = 1
-    display = "full"
+    display = "full"        # homepage display: "list" | "grid" | "full"
+    list_display = "full"   # list page display (defaults to display if omitted)
+    tags = "garden_tags"    # taxonomy for filter buttons on list page
 
   [[params.sections]]
     name = "garden"
@@ -25,6 +27,7 @@ copyright = "Nigalya Ponya ©"
     enable = true
     limit = 2
     display = "list"
+    tags = "garden_tags"
 
   [[params.sections]]
     name = "projects"
@@ -32,6 +35,7 @@ copyright = "Nigalya Ponya ©"
     enable = true
     limit = 2
     display = "grid"
+    tags = "project_tags"
 
   [[params.sections]]
     name = "library"
@@ -39,6 +43,7 @@ copyright = "Nigalya Ponya ©"
     enable = false
     limit = 3
     display = "grid"
+    tags = "library_tags"
 
   [[params.social]]
     name = "Twitter"

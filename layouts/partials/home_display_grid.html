@@ -1,7 +1,16 @@
-{{- /* Grid display mode — two-column cards with optional image, title, summary, tags, date, status */ -}}
-<div class="row row-cols-2 g-2">
+{{- /* Grid display mode — two-column cards with optional image, title, summary, tags, date, status
+     Receives: dict "pages" $pages "tags_key" "project_tags" (optional, for isotope filtering)
+*/ -}}
+{{- $tagsKey := .tags_key -}}
+<div class="row row-cols-2 g-2{{ with .id }} mb-5" id="{{ . }}{{ end }}">
 	{{ range .pages }}
-	<div class="col">
+	{{- $isoClasses := "" -}}
+	{{- if $tagsKey -}}
+		{{- range index .Params $tagsKey -}}
+			{{- $isoClasses = printf "%s js-iso-%s" $isoClasses . -}}
+		{{- end -}}
+	{{- end -}}
+	<div class='col{{ $isoClasses }}'>
 		<div class="card top-highlight">
 			{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
 			{{ if $img }}
@@ -14,8 +23,15 @@
 				<h5 class="card-title">{{ .Title }}</h5>
 				<p class="card-text">{{ .Summary }}</p>
 				<a href="{{ .Permalink }}" class="stretched-link"></a>
-				<div class="row justify-content-between">
-					<div class="col align-self-start">
+				<div class="row justify-content-between" style="flex-wrap: wrap;">
+					<div class="col-12 mb-1">
+					{{- if $tagsKey -}}
+					{{ with index .Params $tagsKey }}
+					{{ range . }}
+					<span class="badge tag-badge">{{ . }}</span>
+					{{ end }}
+					{{ end }}
+					{{- else -}}
 					{{ with .Params.project_tags }}
 					{{ range . }}
 					<span class="badge tag-badge">{{ . }}</span>
@@ -26,6 +42,7 @@
 					<span class="badge tag-badge">{{ . }}</span>
 					{{ end }}
 					{{ end }}
+					{{- end -}}
 					</div>
 					<div class="col-auto align-self-center">
 						{{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
