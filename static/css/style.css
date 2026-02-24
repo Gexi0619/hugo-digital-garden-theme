@@ -360,6 +360,9 @@ h1 .section-count {
   cursor: pointer;
   font-family: var(--title);
 }
+.card .card-body {
+  padding: 0.75rem;
+}
 .card:hover {
   box-shadow: 0 10px 15px rgba(0,0,0,.10), 0 3px 8px rgba(0,0,0,.06);
 }
@@ -382,6 +385,7 @@ h1 .section-count {
 
 .card-right {
   text-align: right;
+  margin-bottom: 0;
 }
 
 .card-date {

@@ -51,7 +51,7 @@ copyright = "Nigalya Ponya ©"
     enable       = true
     limit        = 1
     display      = "full"
-    show         = ["date", "tags"]
+    show         = ["date"]
 
   [[params.sections]]
     name         = "garden"

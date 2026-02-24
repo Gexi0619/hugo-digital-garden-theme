@@ -17,19 +17,9 @@
 		{{ end }}
 		{{ end }}
 		<div class="body-text home-now-text">{{ .Content | safeHTML }}</div>
-		<div class="row justify-content-between mt-2">
-			{{ if or (in $show "date") (in $show "lastmod") }}
-			<div class="col-auto align-self-center">
-				{{ if in $show "date" }}
-				<span class="home-now-date">{{ .Date.Format "Jan 2006" }}</span>
-				{{ end }}
-				{{ if in $show "lastmod" }}
-				<span class="home-now-date">{{ .Lastmod.Format "Jan 2006" }}</span>
-				{{ end }}
-			</div>
-			{{ end }}
+		<div class="row align-items-center mt-2">
 			{{ if in $show "tags" }}
-			<div class="col align-self-start">
+			<div class="col">
 				{{- if $tagsKey -}}
 				{{ with index .Params $tagsKey }}
 				{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}
@@ -41,8 +31,18 @@
 			</div>
 			{{ end }}
 			{{ if in $show "status" }}
-			<div class="col-auto align-self-end">
+			<div class="col-auto">
 				{{ partial "status.html" . }}
+			</div>
+			{{ end }}
+			{{ if or (in $show "date") (in $show "lastmod") }}
+			<div class="col-auto ms-auto">
+				{{ if in $show "date" }}
+				<span class="home-now-date">—— {{ .Date.Format "Jan 2006" }}</span>
+				{{ end }}
+				{{ if in $show "lastmod" }}
+				<span class="home-now-date">—— {{ .Lastmod.Format "Jan 2006" }}</span>
+				{{ end }}
 			</div>
 			{{ end }}
 		</div>

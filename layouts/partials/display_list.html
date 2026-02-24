@@ -4,7 +4,7 @@
 */ -}}
 {{- $tagsKey := .tags_key -}}
 {{- $show := .show | default (slice "summary" "lastmod" "status") -}}
-<div class="row row-cols-1 g-4{{ with .id }} mb-5" id="{{ . }}{{ end }}">
+<div class="row row-cols-1 g-2{{ with .id }} mb-5" id="{{ . }}{{ end }}">
 	{{ range .pages }}
 	{{- $isoClasses := "" -}}
 	{{- if $tagsKey -}}
@@ -29,7 +29,7 @@
 						<h5 class="card-title">{{ .Title }}</h5>
 						{{ if in $show "summary" }}<p class="card-text">{{ .Summary }}</p>{{ end }}
 					</div>
-					<div class="col-4 ">
+					<div class="col-4">
 						<p class="card-right">
 							{{ if in $show "date" }}
 							<span class="card-date">{{ .Date.Format "Jan 2, 2006" }} </span>
@@ -40,21 +40,20 @@
 							{{ if in $show "status" }}
 							<br/>{{ partial "status.html" . }}
 							{{ end }}
+							{{ if in $show "tags" }}
+							<br/>
+							{{- if $tagsKey -}}
+							{{ with index .Params $tagsKey }}
+							{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}
+							{{ end }}
+							{{- else -}}
+							{{ with .Params.garden_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
+							{{ with .Params.project_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
+							{{- end -}}
+							{{ end }}
 						</p>
 					</div>
 				</div>
-				{{ if in $show "tags" }}
-				<div class="mt-2">
-				{{- if $tagsKey -}}
-				{{ with index .Params $tagsKey }}
-				{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}
-				{{ end }}
-				{{- else -}}
-				{{ with .Params.garden_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
-				{{ with .Params.project_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
-				{{- end -}}
-				</div>
-				{{ end }}
 				<a href="{{ .Permalink }}" class="stretched-link"></a>
 			</div>
 		</div>
