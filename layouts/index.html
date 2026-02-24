@@ -19,7 +19,7 @@
 	{{- $sections := default $defaultSections .Site.Params.sections -}}
 	{{ range sort $sections "weight" }}
 		{{ if .enable }}
-			{{ partial "section.html" (dict "ctx" $ "name" .name "limit" .limit "display" .display) }}
+			{{ partial "section.html" (dict "ctx" $ "name" .name "limit" .limit "display" .display "show" .show) }}
 		{{ end }}
 	{{ end }}
 </div>

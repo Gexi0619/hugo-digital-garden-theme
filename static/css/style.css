@@ -399,6 +399,8 @@ h1 .section-count {
   font-weight: 400;
   font-size: 11px;
   background-color: var(--blue);
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .status {

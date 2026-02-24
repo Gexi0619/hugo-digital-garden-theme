@@ -11,6 +11,7 @@
 
 {{- $listDisplay := $sectionCfg.list_display | default $sectionCfg.display | default "list" -}}
 {{- $tagsKey := $sectionCfg.tags -}}
+{{- $show := $sectionCfg.list_show | default $sectionCfg.show -}}
 
 <div class="page-wrapper page-wrapper--narrow">
 
@@ -43,11 +44,11 @@
     {{- $pages := .Pages.ByPublishDate.Reverse -}}
 
     {{ if eq $listDisplay "list" }}
-        {{ partial "display_list.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts") }}
+        {{ partial "display_list.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts" "show" $show) }}
     {{ else if eq $listDisplay "grid" }}
-        {{ partial "display_grid.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts") }}
+        {{ partial "display_grid.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts" "show" $show) }}
     {{ else if eq $listDisplay "full" }}
-        {{ partial "display_full.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts") }}
+        {{ partial "display_full.html" (dict "pages" $pages "tags_key" $tagsKey "id" "blogposts" "show" $show) }}
     {{ end }}
 
 </div>

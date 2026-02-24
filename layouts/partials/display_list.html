@@ -1,7 +1,9 @@
-{{- /* List display mode — single column cards with title, summary, date, status
-     Receives: dict "pages" $pages "tags_key" "garden_tags" (optional, for isotope filtering)
+{{- /* List display mode — single column cards
+     Receives: dict "pages" $pages "show" (slice) "tags_key" (string) "id" (string)
+     show options: "summary", "tags", "date", "lastmod", "status", "image"
 */ -}}
 {{- $tagsKey := .tags_key -}}
+{{- $show := .show | default (slice "summary" "lastmod" "status") -}}
 <div class="row row-cols-1 g-4{{ with .id }} mb-5" id="{{ . }}{{ end }}">
 	{{ range .pages }}
 	{{- $isoClasses := "" -}}
@@ -12,19 +14,47 @@
 	{{- end -}}
 	<div class='col{{ $isoClasses }}'>
 		<div class="card h-100 top-highlight">
+			{{ if in $show "image" }}
+			{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+			{{ if $img }}
+			{{ $img = $img.Fit "500x500" }}
+			{{ with $img }}
+			<img src="{{ .Permalink }}" alt="{{ $.Title }}" class="card-img-top p-3">
+			{{ end }}
+			{{ end }}
+			{{ end }}
 			<div class="card-body">
 				<div class="row justify-content-between">
 					<div class="col-8">
 						<h5 class="card-title">{{ .Title }}</h5>
-						<p class="card-text">{{ .Summary }}</p>
+						{{ if in $show "summary" }}<p class="card-text">{{ .Summary }}</p>{{ end }}
 					</div>
 					<div class="col-4 ">
 						<p class="card-right">
+							{{ if in $show "date" }}
+							<span class="card-date">{{ .Date.Format "Jan 2, 2006" }} </span>
+							{{ end }}
+							{{ if in $show "lastmod" }}
 							<span class="card-date">{{ .Lastmod.Format "Jan 2, 2006" }} </span>
+							{{ end }}
+							{{ if in $show "status" }}
 							<br/>{{ partial "status.html" . }}
+							{{ end }}
 						</p>
 					</div>
 				</div>
+				{{ if in $show "tags" }}
+				<div class="mt-2">
+				{{- if $tagsKey -}}
+				{{ with index .Params $tagsKey }}
+				{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}
+				{{ end }}
+				{{- else -}}
+				{{ with .Params.garden_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
+				{{ with .Params.project_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
+				{{- end -}}
+				</div>
+				{{ end }}
 				<a href="{{ .Permalink }}" class="stretched-link"></a>
 			</div>
 		</div>

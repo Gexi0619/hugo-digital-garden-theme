@@ -1,11 +1,13 @@
 {{- /* Unified section partial
-     Receives: dict "ctx" $ "name" .name "limit" .limit "display" .display
+     Receives: dict "ctx" $ "name" .name "limit" .limit "display" .display "show" .show
      display: "list" | "grid" | "full"
+     show: slice of field names e.g. ["summary", "tags", "date", "lastmod", "status", "image"]
 */ -}}
 {{- $ctx := .ctx -}}
 {{- $name := .name -}}
 {{- $limit := .limit -}}
 {{- $display := .display | default "list" -}}
+{{- $show := .show -}}
 
 <section class="home-section">
 	{{- with $ctx.Site.GetPage "section" $name -}}
@@ -20,10 +22,10 @@
 	{{- $pages := where $ctx.Site.RegularPages "Section" $name | first $limit -}}
 
 	{{ if eq $display "list" }}
-		{{ partial "display_list.html" (dict "pages" $pages) }}
+		{{ partial "display_list.html" (dict "pages" $pages "show" $show) }}
 	{{ else if eq $display "grid" }}
-		{{ partial "display_grid.html" (dict "pages" $pages) }}
+		{{ partial "display_grid.html" (dict "pages" $pages "show" $show) }}
 	{{ else if eq $display "full" }}
-		{{ partial "display_full.html" (dict "pages" $pages) }}
+		{{ partial "display_full.html" (dict "pages" $pages "show" $show) }}
 	{{ end }}
 </section>

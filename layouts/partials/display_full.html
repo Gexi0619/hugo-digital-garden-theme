@@ -1,35 +1,50 @@
 {{- /* Full display mode — full article content rendered inline
-     Receives: dict "pages" $pages "tags_key" "garden_tags" (optional, for isotope filtering)
+     Receives: dict "pages" $pages "show" (slice) "tags_key" (string) "id" (string)
+     show options: "summary", "tags", "date", "lastmod", "status", "image"
 */ -}}
 {{- $tagsKey := .tags_key -}}
+{{- $show := .show | default (slice "date" "tags") -}}
 <div{{ with .id }} class="mb-5" id="{{ . }}"{{ end }}>
 	{{ range .pages }}
 	<div>
+		{{ if in $show "image" }}
+		{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+		{{ if $img }}
+		{{ $img = $img.Fit "800x500" }}
+		{{ with $img }}
+		<img src="{{ .Permalink }}" alt="{{ $.Title }}" class="mb-3" style="max-width: 100%">
+		{{ end }}
+		{{ end }}
+		{{ end }}
 		<div class="body-text home-now-text">{{ .Content | safeHTML }}</div>
 		<div class="row justify-content-between mt-2">
+			{{ if or (in $show "date") (in $show "lastmod") }}
 			<div class="col-auto align-self-center">
+				{{ if in $show "date" }}
 				<span class="home-now-date">{{ .Date.Format "Jan 2006" }}</span>
+				{{ end }}
+				{{ if in $show "lastmod" }}
+				<span class="home-now-date">{{ .Lastmod.Format "Jan 2006" }}</span>
+				{{ end }}
 			</div>
+			{{ end }}
+			{{ if in $show "tags" }}
 			<div class="col align-self-start">
 				{{- if $tagsKey -}}
 				{{ with index .Params $tagsKey }}
-				{{ range . }}
-				<span class="badge tag-badge">{{ . }}</span>
-				{{ end }}
+				{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}
 				{{ end }}
 				{{- else -}}
-				{{ with .Params.garden_tags }}
-				{{ range . }}
-				<span class="badge tag-badge">{{ . }}</span>
-				{{ end }}
-				{{ end }}
-				{{ with .Params.project_tags }}
-				{{ range . }}
-				<span class="badge tag-badge">{{ . }}</span>
-				{{ end }}
-				{{ end }}
+				{{ with .Params.garden_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
+				{{ with .Params.project_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
 				{{- end -}}
 			</div>
+			{{ end }}
+			{{ if in $show "status" }}
+			<div class="col-auto align-self-end">
+				{{ partial "status.html" . }}
+			</div>
+			{{ end }}
 		</div>
 	</div>
 	{{ end }}

@@ -1,7 +1,9 @@
-{{- /* Grid display mode — two-column cards with optional image, title, summary, tags, date, status
-     Receives: dict "pages" $pages "tags_key" "project_tags" (optional, for isotope filtering)
+{{- /* Grid display mode — two-column cards
+     Receives: dict "pages" $pages "show" (slice) "tags_key" (string) "id" (string)
+     show options: "summary", "tags", "date", "lastmod", "status", "image"
 */ -}}
 {{- $tagsKey := .tags_key -}}
+{{- $show := .show | default (slice "summary" "tags" "date" "status" "image") -}}
 <div class="row row-cols-2 g-2{{ with .id }} mb-5" id="{{ . }}{{ end }}">
 	{{ range .pages }}
 	{{- $isoClasses := "" -}}
@@ -12,6 +14,7 @@
 	{{- end -}}
 	<div class='col{{ $isoClasses }}'>
 		<div class="card top-highlight">
+			{{ if in $show "image" }}
 			{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
 			{{ if $img }}
 			{{ $img = $img.Fit "500x500" }}
@@ -19,38 +22,40 @@
 			<img src="{{ .Permalink }}" alt="{{ $.Title }}" class="card-img-top p-3">
 			{{ end }}
 			{{ end }}
+			{{ end }}
 			<div class="card-body">
 				<h5 class="card-title">{{ .Title }}</h5>
-				<p class="card-text">{{ .Summary }}</p>
+				{{ if in $show "summary" }}<p class="card-text">{{ .Summary }}</p>{{ end }}
 				<a href="{{ .Permalink }}" class="stretched-link"></a>
 				<div class="row justify-content-between" style="flex-wrap: wrap;">
+					{{ if in $show "tags" }}
 					<div class="col-12 mb-1">
 					{{- if $tagsKey -}}
 					{{ with index .Params $tagsKey }}
-					{{ range . }}
-					<span class="badge tag-badge">{{ . }}</span>
-					{{ end }}
+					{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}
 					{{ end }}
 					{{- else -}}
-					{{ with .Params.project_tags }}
-					{{ range . }}
-					<span class="badge tag-badge">{{ . }}</span>
-					{{ end }}
-					{{ end }}
-					{{ with .Params.garden_tags }}
-					{{ range . }}
-					<span class="badge tag-badge">{{ . }}</span>
-					{{ end }}
-					{{ end }}
+					{{ with .Params.project_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
+					{{ with .Params.garden_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
 					{{- end -}}
 					</div>
+					{{ end }}
+					{{ if or (in $show "date") (in $show "lastmod") }}
 					<div class="col-auto align-self-center">
 						{{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+						{{ if in $show "date" }}
 						<span style="font-size: small">{{ .Date.Format $dateFormat }}</span>
+						{{ end }}
+						{{ if in $show "lastmod" }}
+						<span style="font-size: small">{{ .Lastmod.Format $dateFormat }}</span>
+						{{ end }}
 					</div>
+					{{ end }}
+					{{ if in $show "status" }}
 					<div class="col-auto align-self-end" style="text-align: right">
 						{{ partial "status.html" . }}
 					</div>
+					{{ end }}
 				</div>
 			</div>
 		</div>

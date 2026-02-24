@@ -1,3 +1,7 @@
+# ==============================================================================
+# Site
+# ==============================================================================
+
 baseURL = "https://www.example.com"
 languageCode = "en-us"
 title = "My Digital Garden"
@@ -5,6 +9,9 @@ theme = "hugo-digital-garden-theme"
 themesdir = "../../"
 copyright = "Nigalya Ponya ©"
 
+# ==============================================================================
+# Params
+# ==============================================================================
 
 [params]
   name = "Nigalya Ponya"
@@ -12,40 +19,76 @@ copyright = "Nigalya Ponya ©"
   initials = "NP"
   googleAnalytics = ""
 
-  [[params.sections]]
-    name = "now"
-    weight = 1
-    enable = true
-    limit = 1
-    display = "full"          # homepage display: "list" | "grid" | "full"
-    # list_display not needed — now has its own dedicated timeline layout
+# --- Fonts ---
+
+[params.fonts]
+  title = "Noto Serif SC"
+  titleType = "serif"
+  titleWeights = "400;700"
+  body = "Noto Sans SC"
+  bodyType = "sans-serif"
+  bodyWeights = "300;400;700"
+
+# ==============================================================================
+# Sections
+# ==============================================================================
+#
+# display / list_display : "list" | "grid" | "full"
+#   - display      → homepage view
+#   - list_display → list page view (defaults to display if omitted)
+#
+# show / list_show : any combination of:
+#   "summary", "tags", "date", "lastmod", "status", "image"
+#   - show      → fields shown on homepage
+#   - list_show → fields shown on list page (defaults to show if omitted)
+#
+# tags : taxonomy key used for filter buttons on list page
+#
 
   [[params.sections]]
-    name = "garden"
-    weight = 2
-    enable = true
-    limit = 2
-    display = "list"          # homepage display
-    list_display = "list"     # list page display (defaults to display if omitted)
-    tags = "garden_tags"      # taxonomy for filter buttons on list page
+    name         = "now"
+    weight       = 1
+    enable       = true
+    limit        = 1
+    display      = "full"
+    show         = ["date", "tags"]
 
   [[params.sections]]
-    name = "projects"
-    weight = 3
-    enable = true
-    limit = 2
-    display = "grid"
+    name         = "garden"
+    weight       = 2
+    enable       = true
+    limit        = 2
+    display      = "list"
+    list_display = "list"
+    tags         = "garden_tags"
+    show         = ["summary", "lastmod", "status"]
+    list_show    = ["summary", "tags", "lastmod", "status"]
+
+  [[params.sections]]
+    name         = "projects"
+    weight       = 3
+    enable       = true
+    limit        = 2
+    display      = "grid"
     list_display = "grid"
-    tags = "project_tags"
+    tags         = "project_tags"
+    show         = ["summary", "tags", "date", "status", "image"]
+    list_show    = ["summary", "tags", "date", "status", "image"]
 
   [[params.sections]]
-    name = "library"
-    weight = 4
-    enable = false
-    limit = 3
-    display = "grid"
+    name         = "library"
+    weight       = 4
+    enable       = false
+    limit        = 3
+    display      = "grid"
     list_display = "grid"
-    tags = "library_tags"
+    tags         = "library_tags"
+    show         = ["summary", "image"]
+    list_show    = ["summary", "tags", "image"]
+
+# ==============================================================================
+# Social
+# ==============================================================================
 
   [[params.social]]
     name = "Twitter"
@@ -58,7 +101,7 @@ copyright = "Nigalya Ponya ©"
     icon = "fab fa-github"
 
   [[params.social]]
-    name = "Medium" 
+    name = "Medium"
     link = "#"
     icon = "fab fa-medium-m"
 
@@ -67,6 +110,9 @@ copyright = "Nigalya Ponya ©"
     link = "#"
     icon = "fab fa-linkedin-in"
 
+# ==============================================================================
+# Menu
+# ==============================================================================
 
 [menu]
   [[menu.main]]
@@ -90,22 +136,18 @@ copyright = "Nigalya Ponya ©"
     url = "/about/"
     weight = 5
 
-
-[params.fonts]
-  title = "Noto Serif SC"
-  titleType = "serif"
-  titleWeights = "400;700"
-
-  body = "Noto Sans SC"
-  bodyType = "sans-serif"
-  bodyWeights = "300;400;700"
-
+# ==============================================================================
+# Taxonomies
+# ==============================================================================
 
 [taxonomies]
   garden_tags = 'garden_tags'
   project_tags = 'project_tags'
   library_tags = 'library_tags'
 
+# ==============================================================================
+# Markup
+# ==============================================================================
 
 [markup]
   defaultMarkdownHandler = 'goldmark'
@@ -127,5 +169,5 @@ copyright = "Nigalya Ponya ©"
     taskList = true
     typographer = true
   [markup.highlight]
-    # Choose from https://xyproto.github.io/splash/docs/all.html
+    # https://xyproto.github.io/splash/docs/all.html
     style = 'rose-pine-moon'
