@@ -1,23 +1,16 @@
 <!-- Projects -->
-<div class="row my-3">
-	<div class="col-12 mt-3">
-		{{ with .ctx.Site.GetPage "section" "projects" }}
-		<div class="pb-4">
-			<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
-		</div>
-		{{ if .Summary }}
-		<p class="subheading">{{ .Summary }}</p>
-		{{ end }}
-		{{ end }}
-		<div class="row row-cols-2 g-2 mb-3">
-			{{ range ( where .ctx.Site.RegularPages "Section" "projects" | first .limit ) }}
-			{{ partial "home_project.html" . }}
-			{{end}}
-		</div>
-		{{ with .ctx.Site.GetPage "section" "projects" }}
-		<div class="d-flex flex-row-reverse">
-			<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all projects</a>
-		</div>
+<section class="home-section">
+	{{ with .ctx.Site.GetPage "section" "projects" }}
+	<div class="pb-3">
+		<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }} <span class="section-count">({{ len .RegularPages }})</span></a>
+	</div>
+	{{ if .Summary }}
+	<p class="subheading">{{ .Summary }}</p>
+	{{ end }}
+	{{ end }}
+	<div class="row row-cols-2 g-2">
+		{{ range ( where .ctx.Site.RegularPages "Section" "projects" | first .limit ) }}
+		{{ partial "home_project.html" . }}
 		{{ end }}
 	</div>
-</div>
+</section>

@@ -3,13 +3,13 @@
 <div class="page-wrapper page-wrapper--narrow">
 
     <!-- Title and summary -->
-    <div class="py-5">
-        <h1 class="display-2 mb-4">{{ .Title }}</h1>
+    <div class="pt-5 pb-3">
+        <h1 class="display-2 mb-4">{{ .Title }} <span class="section-count">({{ len .RegularPages }})</span></h1>
         <p class="bio fs-4 body-text">{{ .Summary }}</p>
     </div>
 
     <!-- Filter Buttons -->
-    <div class="mb-5">
+    <div class="mb-4">
 
         <!-- Multiple checkboxes option -->
         <div class="btn-toolbar mb-2 bio" role="toolbar" aria-label="Toolbar with button groups">

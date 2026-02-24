@@ -1,8 +1,8 @@
 {{ define "main" }}
 
 <div class="page-wrapper page-wrapper--narrow">
-    <div class="py-5">
-        <h1 class="display-2 mb-4">{{ .Title }}</h1>
+    <div class="pt-5 pb-3">
+        <h1 class="display-2 mb-4">{{ .Title }} <span class="section-count">({{ len .RegularPages }})</span></h1>
         <p class="bio fs-4 body-text">{{ .Summary }}</p>
     </div>
 

@@ -283,6 +283,20 @@ nav[aria-label="breadcrumb"] {
   cursor: pointer;
 }
 
+.home-section {
+  margin-bottom: 3rem;
+}
+
+.section-count {
+  font-size: 0.65em;
+  color: #aaa;
+  font-weight: 400;
+}
+
+h1 .section-count {
+  font-size: 0.45em;
+}
+
 /* L4: Section descriptions */
 .subheading {
   font-family: var(--body);

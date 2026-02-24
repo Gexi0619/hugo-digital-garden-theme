@@ -1,18 +1,13 @@
 <!-- Now -->
-<div class="mb-3">
+<section class="home-section">
 	{{ with .ctx.Site.GetPage "section" "now" }}
-	<div class="pb-4">
+	<div class="pb-3">
 		<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
 	</div>
 	{{ end }}
-	<div class="mb-3">
+	<div>
 		{{ range ( where .ctx.Site.RegularPages "Section" "now" | first .limit ) }}
 		{{ partial "home_now.html" . }}
 		{{ end }}
 	</div>
-	{{ with .ctx.Site.GetPage "section" "now" }}
-	<div class="d-flex flex-row-reverse">
-		<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all nows</a>
-	</div>
-	{{ end }}
-</div>
+</section>
