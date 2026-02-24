@@ -1,18 +1,12 @@
-{{- /* Unified home section partial
+{{- /* Unified section partial
      Receives: dict "ctx" $ "name" .name "limit" .limit "display" .display
      display: "list" | "grid" | "full"
-     Falls back to home_section_<name>.html if display is not set
 */ -}}
-
 {{- $ctx := .ctx -}}
 {{- $name := .name -}}
 {{- $limit := .limit -}}
-{{- $display := .display -}}
+{{- $display := .display | default "list" -}}
 
-{{- /* If no display mode specified, fall back to section-specific partial */ -}}
-{{ if not $display }}
-	{{ partial (printf "home_section_%s.html" $name) (dict "ctx" $ctx "limit" $limit) }}
-{{ else }}
 <section class="home-section">
 	{{- with $ctx.Site.GetPage "section" $name -}}
 	<div class="pb-3">
@@ -26,11 +20,10 @@
 	{{- $pages := where $ctx.Site.RegularPages "Section" $name | first $limit -}}
 
 	{{ if eq $display "list" }}
-		{{ partial "home_display_list.html" (dict "pages" $pages) }}
+		{{ partial "display_list.html" (dict "pages" $pages) }}
 	{{ else if eq $display "grid" }}
-		{{ partial "home_display_grid.html" (dict "pages" $pages) }}
+		{{ partial "display_grid.html" (dict "pages" $pages) }}
 	{{ else if eq $display "full" }}
-		{{ partial "home_display_full.html" (dict "pages" $pages) }}
+		{{ partial "display_full.html" (dict "pages" $pages) }}
 	{{ end }}
 </section>
-{{ end }}
