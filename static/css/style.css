@@ -135,6 +135,12 @@ code {
   font-family: var(--title);
 }
 
+/********************* Breadcrumb *********************/
+
+nav[aria-label="breadcrumb"] {
+  display: none;
+}
+
 .navbar .container {
   display: flex;
   flex-wrap: nowrap;
@@ -177,6 +183,10 @@ code {
 }
 .nav-link:hover::after,
 .nav-link:focus::after {
+  opacity: 1;
+}
+
+.nav-item.active .nav-link::after {
   opacity: 1;
 }
 

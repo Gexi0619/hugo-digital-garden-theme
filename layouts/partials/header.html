@@ -8,9 +8,11 @@
             {{ end }}
         </a>
         <ul class="navbar-nav ms-auto flex-row flex-wrap">
-        {{- $currentPage := . -}}
+        {{- $currentURL := .RelPermalink -}}
         {{ range .Site.Menus.main -}}
-            <li class='nav-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}'>
+            {{- $menuURL := .URL -}}
+            {{- $isActive := or (eq $currentURL $menuURL) (strings.HasPrefix $currentURL $menuURL) -}}
+            <li class='nav-item {{ if $isActive }}active{{ end }}'>
                 <a class="nav-link" href="{{ .URL }}"> {{ .Name }}</a>
             </li>
         {{ end }}
