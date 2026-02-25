@@ -35,17 +35,17 @@
             <div>
                 {{ with .Params.tags }}
                 {{ range . }}
-                <span class="badge tag-badge">{{ . }}</span>
+                <a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="badge tag-badge">{{ . }}</a>
                 {{ end }}
             {{ end }}
             {{ with .Params.garden_tags }}
                 {{ range . }}
-                <span class="badge tag-badge">{{ . }}</span>
+                <a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="badge tag-badge">{{ . }}</a>
                 {{ end }}
             {{ end }}
             {{ with .Params.project_tags }}
                 {{ range . }}
-                <span class="badge tag-badge">{{ . }}</span>
+                <a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="badge tag-badge">{{ . }}</a>
                 {{ end }}
             {{ end }}
             </div>
