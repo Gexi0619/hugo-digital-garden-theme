@@ -262,6 +262,45 @@ nav[aria-label="breadcrumb"] {
 /********************* Home - Sections *********************/
 
 /* L3: Section headings (Now, Garden, Projects, Library) */
+.heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+}
+
+.heading-row:hover .heading::after,
+.heading-row:active .heading::after {
+  opacity: 1;
+}
+
+.heading-row:hover .heading-arrow::after,
+.heading-row:active .heading-arrow::after {
+  opacity: 1;
+}
+
+.heading-arrow {
+  font-family: var(--title);
+  color: #aaa;
+  font-size: 1rem;
+  white-space: nowrap;
+  position: relative;
+  padding-bottom: 0.2em;
+}
+
+.heading-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: var(--blue);
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
 .heading {
   font-family: var(--title);
   font-weight: 700;

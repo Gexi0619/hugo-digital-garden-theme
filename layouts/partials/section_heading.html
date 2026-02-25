@@ -11,8 +11,11 @@
 {{- $showCount := .showCount | default true -}}
 
 {{- if $isLink -}}
-<a class="heading fs-2" href="{{ $page.RelPermalink }}">{{ $page.Title }}
+<a class="heading-row" href="{{ $page.RelPermalink }}">
+<span class="heading fs-2">{{ $page.Title }}
 {{- if $showCount }} <span class="section-count">({{ $count }})</span>{{ end -}}
+</span>
+<span class="heading-arrow">&rarr;</span>
 </a>
 {{- else -}}
 <div class="heading heading--no-link">{{ $page.Title }}
