@@ -3,8 +3,7 @@ title: ""
 date: 2026-01-02
 lastmod: 2026-01-02
 draft: false
-garden_tags: ["Milan", "gap"]
-tags: ["life", "travel"]
+tags: ["Milan", "gap", "life", "travel"]
 summary: "This is an example of summary "
 ---
 

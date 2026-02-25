@@ -37,17 +37,7 @@
                 {{ range . }}
                 <a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>
                 {{ end }}
-            {{ end }}
-            {{ with .Params.garden_tags }}
-                {{ range . }}
-                <a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>
                 {{ end }}
-            {{ end }}
-            {{ with .Params.project_tags }}
-                {{ range . }}
-                <a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>
-                {{ end }}
-            {{ end }}
             </div>
             <div>
                 {{ partial "status.html" . }}

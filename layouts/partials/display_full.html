@@ -20,14 +20,9 @@
 		<div class="row align-items-center mt-2">
 			{{ if in $show "tags" }}
 			<div class="col">
-				{{- if $tagsKey -}}
-				{{ with index .Params $tagsKey }}
+				{{ with index .Params ($tagsKey | default "tags") }}
 				{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}
 				{{ end }}
-				{{- else -}}
-				{{ with .Params.garden_tags }}{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}{{ end }}
-				{{ with .Params.project_tags }}{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}{{ end }}
-				{{- end -}}
 			</div>
 			{{ end }}
 			{{ if in $show "status" }}

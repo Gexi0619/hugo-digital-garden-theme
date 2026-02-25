@@ -2,8 +2,7 @@
 title: "Theme Documentation"
 date: 2021-07-01
 draft: false
-project_tags: ["docs", "how-to"]
-tags: ["documentation", "guide"]
+tags: ["docs", "how-to", "documentation", "guide"]
 status: "seeding"
 summary: "Details on how to create and update content on your site"
 weight: 1
@@ -25,13 +24,13 @@ title: "Title"
 date: 2019-01-01
 lastmod: 2020-02-02
 draft: false
-garden_tags: ["tag1", "tag2"]
+tags: ["tag1", "tag2"]
 summary: " "
 status: "evergreen"
 ---
 ```
-* If you don't want any `summary` to be displayed, leave a whitespace otherwise the default summary will be the first sentence of your post.  
-* The `garden_tags` are used as filter on the Digital Garden page.  
+* If you don't want any `summary` to be displayed, leave a whitespace otherwise the default summary will be the first sentence of your post.
+* The `tags` are used as filter on section list pages.
 * The `status` can be one of `seeding`, `growing` or `evergreen`. You can customized those by creating a new file in `layouts/partials/status.html` (look at `themes/digital-garden/layouts/partials/status.html` for an example).
 
 ### Project front matter
@@ -41,7 +40,6 @@ status: "evergreen"
 title: "Project Title"
 date: 2021-01-01
 draft: false
-project_tags: ["markdown"]
 status: "evergreen"
 summary: "Project summary"
 links:

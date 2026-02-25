@@ -3,7 +3,7 @@ title: "A tough summer"
 date: 2025-07-01
 lastmod: 2025-07-01
 draft: false
-garden_tags: ["tesi", "university"]
+tags: ["tesi", "university"]
 summary: "This is an example of summary "
 ---
 

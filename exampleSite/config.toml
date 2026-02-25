@@ -2,7 +2,7 @@
 # Site
 # ==============================================================================
 
-baseURL = "https://www.example.com"
+baseURL = "0.0.0.0"
 languageCode = "en-us"
 title = "My Digital Garden"
 theme = "hugo-digital-garden-theme"
@@ -60,7 +60,7 @@ copyright = "Nigalya Ponya ©"
     limit        = 2
     display      = "list"
     list_display = "list"
-    tags         = "garden_tags"
+    tags         = "tags"
     show         = ["summary", "lastmod", "status", "ping"]
     list_show    = ["summary", "tags", "lastmod", "status", "ping"]
 
@@ -71,7 +71,7 @@ copyright = "Nigalya Ponya ©"
     limit        = 2
     display      = "grid"
     list_display = "grid"
-    tags         = "project_tags"
+    tags         = "tags"
     show         = ["summary", "tags", "date", "status", "image", "ping"]
     list_show    = ["summary", "tags", "date", "status", "image", "ping"]
 
@@ -82,7 +82,7 @@ copyright = "Nigalya Ponya ©"
     limit        = 3
     display      = "grid"
     list_display = "grid"
-    tags         = "library_tags"
+    tags         = "tags"
     show         = ["summary", "image"]
     list_show    = ["summary", "tags", "image"]
 
@@ -145,9 +145,6 @@ copyright = "Nigalya Ponya ©"
 
 [taxonomies]
   tag = 'tags'
-  garden_tags = 'garden_tags'
-  project_tags = 'project_tags'
-  library_tags = 'library_tags'
 
 # ==============================================================================
 # Tag Page Sections

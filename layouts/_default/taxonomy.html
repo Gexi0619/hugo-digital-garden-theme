@@ -14,8 +14,9 @@
 
 <div class="page-wrapper page-wrapper--narrow">
 
-	<div class="pt-5 pb-3">
+	<div class="pt-5 pb-3 d-flex align-items-baseline justify-content-between flex-wrap">
 		<h1 class="display-2 mb-4">#{{ $tagName }} <span class="section-count">({{ len .Pages }})</span></h1>
+		<a href="{{ "tags/" | relURL }}" class="all-tags-link">All tags →</a>
 	</div>
 
 	{{- /* Group all tagged pages by section */ -}}

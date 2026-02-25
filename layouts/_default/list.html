@@ -21,18 +21,26 @@
         <p class="bio fs-4 body-text">{{ .Summary }}</p>
     </div>
 
-    {{- /* Filter Buttons — only shown when a tags taxonomy is configured */ -}}
+    {{- /* Filter Buttons — collect tags from this section's pages */ -}}
     {{ if $tagsKey }}
-    {{ $taxonomy := index .Site.Taxonomies $tagsKey }}
-    {{ if $taxonomy }}
+    {{- $allTags := slice -}}
+    {{- range .RegularPages -}}
+        {{- with index .Params $tagsKey -}}
+            {{- range . -}}
+                {{- $allTags = $allTags | append (. | urlize) -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+    {{- $allTags = $allTags | uniq | sort -}}
+    {{ if $allTags }}
     <div class="mb-4">
         <div class="btn-toolbar mb-2 bio" role="toolbar" aria-label="Toolbar with button groups">
             <div id="filters" class="button-group">
                 <i class="fas fa-filter"></i>
-                {{ range $name, $_ := $taxonomy }}
-                {{ $btnid := $name | printf ".js-iso-%s"}}
+                {{ range $allTags }}
+                {{ $btnid := . | printf ".js-iso-%s"}}
                 <input type="checkbox" class="btn-check" id="{{ $btnid }}" autocomplete="off" data-filter="{{ $btnid }}">
-                <label class="button" for="{{ $btnid }}">{{ $name }}</label>
+                <label class="button" for="{{ $btnid }}">{{ . }}</label>
                 {{ end }}
             </div>
         </div>

@@ -9,7 +9,7 @@
 	{{- $isoClasses := "" -}}
 	{{- if $tagsKey -}}
 		{{- range index .Params $tagsKey -}}
-			{{- $isoClasses = printf "%s js-iso-%s" $isoClasses . -}}
+			{{- $isoClasses = printf "%s js-iso-%s" $isoClasses (. | urlize) -}}
 		{{- end -}}
 	{{- end -}}
 	<div class='col{{ $isoClasses }}'>
@@ -42,14 +42,9 @@
 							{{ end }}
 							{{ if in $show "tags" }}
 							<br/>
-							{{- if $tagsKey -}}
-							{{ with index .Params $tagsKey }}
+							{{ with index .Params ($tagsKey | default "tags") }}
 							{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}
 							{{ end }}
-							{{- else -}}
-							{{ with .Params.garden_tags }}{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}{{ end }}
-							{{ with .Params.project_tags }}{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}{{ end }}
-							{{- end -}}
 							{{ end }}
 						</p>
 					</div>

@@ -3,7 +3,7 @@ title: "Now of December 2024"
 date: 2024-12-01
 lastmod: 2024-12-01
 draft: false
-garden_tags: ["bamboo", "food"]
+tags: ["bamboo", "food"]
 summary: "This is an example of summary "
 ---
 

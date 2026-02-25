@@ -2,8 +2,7 @@
 title: "Markdown Syntax"
 date: 2021-08-01
 draft: false
-project_tags: ["markdown"]
-tags: ["documentation", "web"]
+tags: ["markdown", "documentation", "web"]
 status: "evergreen"
 weight: 2
 ping: true

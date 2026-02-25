@@ -17,7 +17,7 @@
                 <div class="now-timeline-date">
                     {{ .Date.Format "Jan 2006" }}
                 </div>
-                {{ with .Params.garden_tags }}
+                {{ with .Params.tags }}
                 <div class="now-timeline-tags">
                     {{ range . }}
                     <a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>

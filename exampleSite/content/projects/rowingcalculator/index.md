@@ -3,7 +3,7 @@ title: "Rowing Calculator"
 date: 2023-12-01
 lastMod: 2026-02-19
 draft: false
-project_tags: ["technology", "rowing"]
+tags: ["technology", "rowing"]
 status: "composting"
 summary: "多功能赛艇计算器应用程序"
 weight: 3

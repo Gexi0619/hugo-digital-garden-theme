@@ -3,7 +3,7 @@ title: "DIY Conta Colpi"
 date: 2024-12-15
 lastMod: 2025-01-08
 draft: false
-project_tags: ["technology", "rowing"]
+tags: ["technology", "rowing"]
 status: "growing"
 summary: "DIY桨频器"
 weight: 1
