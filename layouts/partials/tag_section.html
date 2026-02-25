@@ -1,0 +1,31 @@
+{{- /* Tag section partial
+     Renders a section's pages within a tag page.
+     Receives: dict "ctx" $ "name" .name "pages" .pages "display" .display "show" .show
+     display: "list" | "grid" | "full"
+     show: slice of field names e.g. ["summary", "tags", "date", "lastmod", "status", "image"]
+*/ -}}
+{{- $ctx := .ctx -}}
+{{- $name := .name -}}
+{{- $pages := .pages -}}
+{{- $display := .display | default "list" -}}
+{{- $show := .show -}}
+
+{{ if gt (len $pages) 0 }}
+<section class="home-section">
+	{{- with $ctx.Site.GetPage "section" $name -}}
+	<div class="pb-3">
+		<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}
+		{{- if ne $display "full" }} <span class="section-count">({{ len $pages }})</span>{{ end -}}
+		</a>
+	</div>
+	{{- end -}}
+
+	{{ if eq $display "list" }}
+		{{ partial "display_list.html" (dict "pages" $pages "show" $show) }}
+	{{ else if eq $display "grid" }}
+		{{ partial "display_grid.html" (dict "pages" $pages "show" $show) }}
+	{{ else if eq $display "full" }}
+		{{ partial "display_full.html" (dict "pages" $pages "show" $show) }}
+	{{ end }}
+</section>
+{{ end }}

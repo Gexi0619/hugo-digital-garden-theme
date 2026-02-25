@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+{{- /* Get the current tag name */ -}}
+{{- $tagName := .Data.Term -}}
+
+{{- /* Build section config: use tag_sections if defined, otherwise fall back to sections */ -}}
+{{- $defaultSections := slice
+	(dict "name" "now" "weight" 1 "enable" true "display" "full")
+	(dict "name" "garden" "weight" 2 "enable" true "display" "list")
+	(dict "name" "projects" "weight" 3 "enable" true "display" "grid")
+	(dict "name" "library" "weight" 4 "enable" true "display" "grid")
+-}}
+{{- $sections := default $defaultSections (default .Site.Params.sections .Site.Params.tag_sections) -}}
+
+<div class="page-wrapper page-wrapper--narrow">
+
+	<div class="pt-5 pb-3">
+		<h1 class="display-2 mb-4">#{{ $tagName }} <span class="section-count">({{ len .Pages }})</span></h1>
+	</div>
+
+	{{- /* Group all tagged pages by section */ -}}
+	{{- $pagesBySection := dict -}}
+	{{- range .Pages -}}
+		{{- $sec := .Section -}}
+		{{- $existing := index $pagesBySection $sec | default slice -}}
+		{{- $pagesBySection = merge $pagesBySection (dict $sec ($existing | append .)) -}}
+	{{- end -}}
+
+	{{- /* Render each configured section that has pages */ -}}
+	{{ range sort $sections "weight" }}
+		{{ if .enable }}
+			{{- $sectionPages := index $pagesBySection .name -}}
+			{{ if $sectionPages }}
+				{{ partial "tag_section.html" (dict "ctx" $ "name" .name "pages" $sectionPages "display" (.tag_display | default .display) "show" (.tag_show | default .show)) }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+
+</div>
+
+{{ end }}

@@ -141,9 +141,49 @@ copyright = "Nigalya Ponya ©"
 # ==============================================================================
 
 [taxonomies]
+  tag = 'tags'
   garden_tags = 'garden_tags'
   project_tags = 'project_tags'
   library_tags = 'library_tags'
+
+# ==============================================================================
+# Tag Page Sections
+# ==============================================================================
+#
+# Configure how sections appear on individual tag pages (/tags/<tag>/).
+# Falls back to [params.sections] config if omitted.
+#
+# tag_display / tag_show can also be set per-section in [params.sections]
+# to override display/show specifically for tag pages.
+#
+
+  [[params.tag_sections]]
+    name         = "now"
+    weight       = 1
+    enable       = true
+    display      = "full"
+    show         = ["date"]
+
+  [[params.tag_sections]]
+    name         = "garden"
+    weight       = 2
+    enable       = true
+    display      = "list"
+    show         = ["summary", "lastmod", "status"]
+
+  [[params.tag_sections]]
+    name         = "projects"
+    weight       = 3
+    enable       = true
+    display      = "grid"
+    show         = ["summary", "date", "status", "image"]
+
+  [[params.tag_sections]]
+    name         = "library"
+    weight       = 4
+    enable       = true
+    display      = "grid"
+    show         = ["summary", "image"]
 
 # ==============================================================================
 # Markup
