@@ -296,6 +296,21 @@ nav[aria-label="breadcrumb"] {
   cursor: pointer;
 }
 
+.heading--no-link {
+  cursor: default;
+  text-decoration: none;
+}
+
+.heading--no-link::after {
+  display: none;
+}
+
+.heading--no-link:hover,
+.heading--no-link:active {
+  color: var(--grey);
+  cursor: default;
+}
+
 .home-section {
   margin-bottom: 3rem;
 }

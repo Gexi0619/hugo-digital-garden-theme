@@ -1,0 +1,21 @@
+{{- /* Section heading partial - renders the title for a section
+     Receives: dict "page" .page "count" .count "isLink" .isLink "showCount" .showCount
+     page: the section page object
+     count: number of items in section
+     isLink: boolean, whether to render as a link (default true)
+     showCount: boolean, whether to show item count (default true)
+*/ -}}
+{{- $page := .page -}}
+{{- $count := .count -}}
+{{- $isLink := .isLink | default true -}}
+{{- $showCount := .showCount | default true -}}
+
+{{- if $isLink -}}
+<a class="heading fs-2" href="{{ $page.RelPermalink }}">{{ $page.Title }}
+{{- if $showCount }} <span class="section-count">({{ $count }})</span>{{ end -}}
+</a>
+{{- else -}}
+<div class="heading heading--no-link">{{ $page.Title }}
+{{- if $showCount }} <span class="section-count">({{ $count }})</span>{{ end -}}
+</div>
+{{- end -}}

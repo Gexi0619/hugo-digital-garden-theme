@@ -31,7 +31,7 @@
 		{{ if .enable }}
 			{{- $sectionPages := index $pagesBySection .name -}}
 			{{ if $sectionPages }}
-				{{ partial "tag_section.html" (dict "ctx" $ "name" .name "pages" $sectionPages "display" (.tag_display | default .display) "show" (.tag_show | default .show)) }}
+				{{ partial "tag_section.html" (dict "ctx" $ "name" .name "pages" $sectionPages "display" (.tag_display | default .display) "show" (.tag_show | default .show) "isLink" false "showCount" false) }}
 			{{ end }}
 		{{ end }}
 	{{ end }}

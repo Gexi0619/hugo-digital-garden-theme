@@ -1,4 +1,4 @@
-{{- /* Unified section partial
+{{- /* Unified section partial - for home page sections
      Receives: dict "ctx" $ "name" .name "limit" .limit "display" .display "show" .show
      display: "list" | "grid" | "full"
      show: slice of field names e.g. ["summary", "tags", "date", "lastmod", "status", "image"]
@@ -12,9 +12,7 @@
 <section class="home-section">
 	{{- with $ctx.Site.GetPage "section" $name -}}
 	<div class="pb-3">
-		<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}
-		{{- if ne $display "full" }} <span class="section-count">({{ len .RegularPages }})</span>{{ end -}}
-		</a>
+		{{ partial "section_heading.html" (dict "page" . "count" (len .RegularPages) "isLink" true "showCount" (ne $display "full")) }}
 	</div>
 	{{ if .Summary }}<p class="subheading">{{ .Summary }}</p>{{ end }}
 	{{- end -}}
