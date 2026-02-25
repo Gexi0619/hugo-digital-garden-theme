@@ -427,6 +427,22 @@ a.tag-badge:hover {
   text-decoration: none;
 }
 
+.tag-link {
+  color: var(--blue);
+  font-family: var(--body);
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-right: 0;
+  padding: 0.05rem 0.2rem;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.tag-link:hover {
+  background-color: var(--lighter-blue);
+}
+
 .status {
   font-family: var(--title);
   font-weight: lighter;
@@ -444,7 +460,7 @@ a.tag-badge:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25em 0.75em;
+  padding: 0.25em 0.5em;
   background: var(--white);
   border: 2px solid transparent;
   color: var(--grey);
@@ -452,11 +468,12 @@ a.tag-badge:hover {
   text-transform: capitalize;
   line-height: 1;
   white-space: nowrap;
+  text-decoration: none;
 }
 .button:hover {
   background-color: var(--lighter-blue);
   color: var(--dark);
-  transition: 1s;
+  transition: 0.3s;
 }
 .button:active,
 .button.is-checked {

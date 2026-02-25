@@ -20,7 +20,7 @@
                 {{ with .Params.garden_tags }}
                 <div class="now-timeline-tags">
                     {{ range . }}
-                    <span class="badge tag-badge">{{ . }}</span>
+                    <a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>
                     {{ end }}
                 </div>
                 {{ end }}

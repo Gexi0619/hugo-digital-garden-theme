@@ -22,11 +22,11 @@
 			<div class="col">
 				{{- if $tagsKey -}}
 				{{ with index .Params $tagsKey }}
-				{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}
+				{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}
 				{{ end }}
 				{{- else -}}
-				{{ with .Params.garden_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
-				{{ with .Params.project_tags }}{{ range . }}<span class="badge tag-badge">{{ . }}</span>{{ end }}{{ end }}
+				{{ with .Params.garden_tags }}{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}{{ end }}
+				{{ with .Params.project_tags }}{{ range . }}<a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}" class="tag-link">#{{ . }}</a>{{ end }}{{ end }}
 				{{- end -}}
 			</div>
 			{{ end }}
