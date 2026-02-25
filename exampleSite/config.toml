@@ -38,7 +38,7 @@ copyright = "Nigalya Ponya ©"
 #   - list_display → list page view (defaults to display if omitted)
 #
 # show / list_show : any combination of:
-#   "summary", "tags", "date", "lastmod", "status", "image"
+#   "summary", "tags", "date", "lastmod", "status", "image", "ping"
 #   - show      → fields shown on homepage
 #   - list_show → fields shown on list page (defaults to show if omitted)
 #
@@ -61,8 +61,8 @@ copyright = "Nigalya Ponya ©"
     display      = "list"
     list_display = "list"
     tags         = "garden_tags"
-    show         = ["summary", "lastmod", "status"]
-    list_show    = ["summary", "tags", "lastmod", "status"]
+    show         = ["summary", "lastmod", "status", "ping"]
+    list_show    = ["summary", "tags", "lastmod", "status", "ping"]
 
   [[params.sections]]
     name         = "projects"
@@ -72,8 +72,8 @@ copyright = "Nigalya Ponya ©"
     display      = "grid"
     list_display = "grid"
     tags         = "project_tags"
-    show         = ["summary", "tags", "date", "status", "image"]
-    list_show    = ["summary", "tags", "date", "status", "image"]
+    show         = ["summary", "tags", "date", "status", "image", "ping"]
+    list_show    = ["summary", "tags", "date", "status", "image", "ping"]
 
   [[params.sections]]
     name         = "library"

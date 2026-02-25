@@ -1,6 +1,6 @@
 {{- /* Full display mode — full article content rendered inline
      Receives: dict "pages" $pages "show" (slice) "tags_key" (string) "id" (string)
-     show options: "summary", "tags", "date", "lastmod", "status", "image"
+     show options: "summary", "tags", "date", "lastmod", "status", "image", "ping"
 */ -}}
 {{- $tagsKey := .tags_key -}}
 {{- $show := .show | default (slice "date" "tags") -}}
@@ -42,6 +42,9 @@
 				{{ end }}
 				{{ if in $show "lastmod" }}
 				<span class="home-now-date">—— {{ .Lastmod.Format "Jan 2006" }}</span>
+				{{ end }}
+				{{ if and (in $show "ping") .Params.ping }}
+				<span class="home-now-date" style="margin-left: 0.5rem;"><i class="fas fa-thumbtack" style="color: #ccc; font-size: 0.8rem;"></i></span>
 				{{ end }}
 			</div>
 			{{ end }}

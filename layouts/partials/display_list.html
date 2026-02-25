@@ -1,6 +1,6 @@
 {{- /* List display mode — single column cards
      Receives: dict "pages" $pages "show" (slice) "tags_key" (string) "id" (string)
-     show options: "summary", "tags", "date", "lastmod", "status", "image"
+     show options: "summary", "tags", "date", "lastmod", "status", "image", "ping"
 */ -}}
 {{- $tagsKey := .tags_key -}}
 {{- $show := .show | default (slice "summary" "lastmod" "status") -}}
@@ -25,17 +25,17 @@
 			{{ end }}
 			<div class="card-body">
 				<div class="row justify-content-between">
-					<div class="col-8">
+					<div class="col-7">
 						<h5 class="card-title">{{ .Title }}</h5>
 						{{ if in $show "summary" }}<p class="card-text">{{ .Summary }}</p>{{ end }}
 					</div>
-					<div class="col-4">
+					<div class="col-5">
 						<p class="card-right">
 							{{ if in $show "date" }}
 							<span class="card-date">{{ .Date.Format "Jan 2, 2006" }} </span>
 							{{ end }}
 							{{ if in $show "lastmod" }}
-							<span class="card-date">{{ .Lastmod.Format "Jan 2, 2006" }} </span>
+							<span class="card-date">{{ .Lastmod.Format "Jan 2, 2006" }}{{ if and (in $show "ping") .Params.ping }} <i class="fas fa-thumbtack" style="color: #ccc; margin-left: 0.25rem; font-size: 0.8rem;"></i>{{ end }} </span>
 							{{ end }}
 							{{ if in $show "status" }}
 							<br/>{{ partial "status.html" . }}
