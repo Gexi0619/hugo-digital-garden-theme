@@ -7,7 +7,7 @@
 links:
 
   - title: "GitHub"
-    url: "https://github.com/username"
+    url: "https://github.com/gexi0619"
     icon: "github"
     note: "Open-source projects"
     ping: true
@@ -15,16 +15,24 @@ links:
     new_tab: true
 
   - title: "Instagram"
-    url: "https://instagram.com/username"
+    url: "https://instagram.com/gexi_sun"
     icon: "instagram"
     note: "Daily life & rowing"
     ping: false
     weight: 2
     new_tab: true
 
-  - title: "YouTube"
-    url: "https://youtube.com/@username"
-    icon: "youtube"
+  - title: "Bilibili"
+    url: "https://space.bilibili.com/13061031"
+    icon: "bilibili"
+    note: "Tutorials & experiments"
+    ping: false
+    weight: 3
+    new_tab: true
+
+  - title: "微博"
+    url: "https://weibo.com/gexi0619"
+    icon: "sinaweibo"
     note: "Tutorials & experiments"
     ping: false
     weight: 3
@@ -32,7 +40,7 @@ links:
 
   - title: "Blog"
     url: "/posts"
-    icon: "markdown"
+    icon: "hugo"
     note: "Long-form writing"
     ping: false
     weight: 4

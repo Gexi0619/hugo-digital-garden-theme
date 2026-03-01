@@ -1,25 +1,5 @@
 {{ define "main" }}
 
-{{- /* Icon mapping from short names to Simple Icons slugs */ -}}
-{{- $iconMap := dict
-  "github"    "github"
-  "instagram" "instagram"
-  "youtube"   "youtube"
-  "twitter"   "twitter"
-  "x"         "x-twitter"
-  "linkedin"  "linkedin"
-  "blog"      "markdown"
-  "email"     "maildotru"
-  "website"   "globe"
-  "tiktok"    "tiktok"
-  "discord"   "discord"
-  "telegram"  "telegram"
-  "mastodon"  "mastodon"
-  "facebook"  "facebook"
-  "reddit"    "reddit"
-  "medium"    "medium"
--}}
-
 <div class="page-wrapper page-wrapper--narrow">
   <div class="pt-5 pb-3">
     <h1 class="display-2 mb-4">{{ .Title }}</h1>
@@ -36,9 +16,7 @@
           <div class="row align-items-center justify-content-between">
             <!-- Left: Icon + Title -->
             <div class="col-auto d-flex align-items-center gap-3">
-              {{- /* Get icon slug from map, fallback to link */ -}}
-              {{- $iconSlug := index $iconMap .icon | default "link" -}}
-              <img src="https://cdn.simpleicons.org/{{ $iconSlug }}" alt="{{ .icon }}" class="linktree-icon">
+              <img src="https://cdn.simpleicons.org/{{ .icon }}" alt="{{ .title }}" class="linktree-icon">
               <h5 class="card-title mb-0">{{ .title }}</h5>
             </div>
             <!-- Right: Note + Ping indicator -->
