@@ -89,26 +89,28 @@ copyright = "Nigalya Ponya ©"
 # ==============================================================================
 # Social
 # ==============================================================================
+# Icon values: Simple Icons CDN slugs (https://simpleicons.org/)
+# To find icon slugs, search for your brand on simpleicons.org
 
   [[params.social]]
     name = "Twitter"
     link = "#"
-    icon = "fab fa-twitter"
+    icon = "x"
 
   [[params.social]]
     name = "Github"
     link = "#"
-    icon = "fab fa-github"
+    icon = "github"
 
   [[params.social]]
-    name = "Medium"
+    name = "Email"
     link = "#"
-    icon = "fab fa-medium-m"
+    icon = "gmail"
 
   [[params.social]]
     name = "LinkedIn"
     link = "#"
-    icon = "fab fa-linkedin-in"
+    icon = "linkedin"
 
 # ==============================================================================
 # Menu

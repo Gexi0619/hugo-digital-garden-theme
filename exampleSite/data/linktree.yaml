@@ -1,3 +1,9 @@
+# Linktree links configuration
+# icon: Simple Icons CDN slugs (https://simpleicons.org/) - search your brand on the website
+# ping: true = shows blue dot indicator
+# weight: sort order (lower number = appears first)
+# new_tab: true = opens in new tab
+
 links:
 
   - title: "GitHub"
@@ -26,7 +32,7 @@ links:
 
   - title: "Blog"
     url: "/posts"
-    icon: "blog"
+    icon: "markdown"
     note: "Long-form writing"
     ping: false
     weight: 4

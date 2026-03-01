@@ -679,15 +679,21 @@ a.tag-badge:hover {
   gap: 0;
 }
 
-.footer-social a,
-.footer-social i {
-  color: var(--dark);
-  font-size: large;
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity .5s;
 }
-.footer-social a,
-.footer-social i:hover {
-  color: var(--blue);
-  transition: color .5s;
+
+.footer-social img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  filter: invert(var(--invert));
+}
+
+.footer-social a:hover img {
+  filter: invert(var(--invert)) brightness(0.7);
 }
 
 .footer-copyright {

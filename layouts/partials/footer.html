@@ -2,7 +2,9 @@
     <div class="footer-container">
         <div class="footer-social-wrapper">
             {{ range .Site.Params.Social }}
-            <a class="footer-social px-2" {{ with .rel }} rel="{{ . }}" {{ end }} href="{{ .link }}" target="_blank"><i class="{{ .icon }}"></i></a>
+            <a class="footer-social px-2" {{ with .rel }} rel="{{ . }}" {{ end }} href="{{ .link }}" target="_blank">
+                <img src="https://cdn.simpleicons.org/{{ .icon }}" alt="{{ .name }}" class="social-icon">
+            </a>
             {{ end }}
         </div>
         <p class="footer footer-copyright">{{ .Site.Copyright }} {{ now.Format "2006"}} </p>

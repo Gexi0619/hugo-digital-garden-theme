@@ -1,23 +1,23 @@
 {{ define "main" }}
 
-{{- /* Icon mapping from short names to FontAwesome classes */ -}}
+{{- /* Icon mapping from short names to Simple Icons slugs */ -}}
 {{- $iconMap := dict
-  "github"    "fab fa-github"
-  "instagram" "fab fa-instagram"
-  "youtube"   "fab fa-youtube"
-  "twitter"   "fab fa-twitter"
-  "x"         "fab fa-x-twitter"
-  "linkedin"  "fab fa-linkedin-in"
-  "blog"      "fas fa-pen-to-square"
-  "email"     "fas fa-envelope"
-  "website"   "fas fa-globe"
-  "tiktok"    "fab fa-tiktok"
-  "discord"   "fab fa-discord"
-  "telegram"  "fab fa-telegram"
-  "mastodon"  "fab fa-mastodon"
-  "facebook"  "fab fa-facebook"
-  "reddit"    "fab fa-reddit"
-  "medium"    "fab fa-medium-m"
+  "github"    "github"
+  "instagram" "instagram"
+  "youtube"   "youtube"
+  "twitter"   "twitter"
+  "x"         "x-twitter"
+  "linkedin"  "linkedin"
+  "blog"      "markdown"
+  "email"     "maildotru"
+  "website"   "globe"
+  "tiktok"    "tiktok"
+  "discord"   "discord"
+  "telegram"  "telegram"
+  "mastodon"  "mastodon"
+  "facebook"  "facebook"
+  "reddit"    "reddit"
+  "medium"    "medium"
 -}}
 
 <div class="page-wrapper page-wrapper--narrow">
@@ -36,9 +36,9 @@
           <div class="row align-items-center justify-content-between">
             <!-- Left: Icon + Title -->
             <div class="col-auto d-flex align-items-center gap-3">
-              {{- /* Get icon class from map, fallback to fas fa-link */ -}}
-              {{- $iconClass := index $iconMap .icon | default "fas fa-link" -}}
-              <i class="{{ $iconClass }} linktree-icon"></i>
+              {{- /* Get icon slug from map, fallback to link */ -}}
+              {{- $iconSlug := index $iconMap .icon | default "link" -}}
+              <img src="https://cdn.simpleicons.org/{{ $iconSlug }}" alt="{{ .icon }}" class="linktree-icon">
               <h5 class="card-title mb-0">{{ .title }}</h5>
             </div>
             <!-- Right: Note + Ping indicator -->
@@ -48,7 +48,7 @@
                 <span class="card-date">{{ .note }}</span>
                 {{- end -}}
                 {{- if .ping -}}
-                <i class="fas fa-circle linktree-ping" title="Active"></i>
+                <span class="linktree-ping" title="Active"></span>
                 {{- end -}}
               </p>
             </div>
