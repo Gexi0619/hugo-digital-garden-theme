@@ -1,5 +1,6 @@
 # Linktree links configuration
 # icon: Simple Icons CDN slugs (https://simpleicons.org/) - search your brand on the website
+# nickname: optional custom name displayed in card
 # status: "active" (green dot) or "dormant" (gray dot) - active items always appear first
 # tags: list of tags for filtering (e.g., [development, social, media])
 # weight: sort order (lower number = appears first)
@@ -8,6 +9,7 @@
 links:
 
   - title: "GitHub"
+    nickname: "Gexi0619"
     url: "https://github.com/gexi0619"
     icon: "github"
     note: "Open-source projects"
@@ -17,6 +19,7 @@ links:
     new_tab: true
 
   - title: "Blog"
+    nickname: "My Blog"
     url: "/posts"
     icon: "hugo"
     note: "Long-form writing"
@@ -26,6 +29,7 @@ links:
     new_tab: false
 
   - title: "Instagram"
+    nickname: "@gexi_sun"
     url: "https://instagram.com/gexi_sun"
     icon: "instagram"
     note: "Daily life & rowing"
@@ -35,6 +39,7 @@ links:
     new_tab: true
 
   - title: "Bilibili"
+    nickname: "格里高尔的苹果里的虫"
     url: "https://space.bilibili.com/13061031"
     icon: "bilibili"
     note: "Tutorials & experiments"
@@ -44,6 +49,7 @@ links:
     new_tab: true
 
   - title: "微博"
+    nickname: "@西塞罗_0"
     url: "https://weibo.com/gexi0619"
     icon: "sinaweibo"
     note: "Tutorials & experiments"

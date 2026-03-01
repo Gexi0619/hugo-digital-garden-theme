@@ -142,7 +142,7 @@ copyright = "Nigalya Ponya ©"
     url = "/tags/"
     weight = 6
   [[menu.main]]
-    name = "Links"
+    name = "Linktree"
     url = "/linktree/"
     weight = 7
 # ==============================================================================
