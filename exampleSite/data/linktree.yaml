@@ -1,6 +1,7 @@
 # Linktree links configuration
 # icon: Simple Icons CDN slugs (https://simpleicons.org/) - search your brand on the website
-# ping: true = shows blue dot indicator
+# status: "active" (green dot) or "dormant" (gray dot) - active items always appear first
+# tags: list of tags for filtering (e.g., [development, social, media])
 # weight: sort order (lower number = appears first)
 # new_tab: true = opens in new tab
 
@@ -10,38 +11,43 @@ links:
     url: "https://github.com/gexi0619"
     icon: "github"
     note: "Open-source projects"
-    ping: true
+    tags: [development, code]
+    status: "active"
     weight: 1
-    new_tab: true
-
-  - title: "Instagram"
-    url: "https://instagram.com/gexi_sun"
-    icon: "instagram"
-    note: "Daily life & rowing"
-    ping: false
-    weight: 2
-    new_tab: true
-
-  - title: "Bilibili"
-    url: "https://space.bilibili.com/13061031"
-    icon: "bilibili"
-    note: "Tutorials & experiments"
-    ping: false
-    weight: 3
-    new_tab: true
-
-  - title: "微博"
-    url: "https://weibo.com/gexi0619"
-    icon: "sinaweibo"
-    note: "Tutorials & experiments"
-    ping: false
-    weight: 3
     new_tab: true
 
   - title: "Blog"
     url: "/posts"
     icon: "hugo"
     note: "Long-form writing"
-    ping: false
-    weight: 4
+    tags: [writing, personal]
+    status: "active"
+    weight: 2
     new_tab: false
+
+  - title: "Instagram"
+    url: "https://instagram.com/gexi_sun"
+    icon: "instagram"
+    note: "Daily life & rowing"
+    tags: [social, personal]
+    status: "dormant"
+    weight: 1
+    new_tab: true
+
+  - title: "Bilibili"
+    url: "https://space.bilibili.com/13061031"
+    icon: "bilibili"
+    note: "Tutorials & experiments"
+    tags: [video, content]
+    status: "dormant"
+    weight: 2
+    new_tab: true
+
+  - title: "微博"
+    url: "https://weibo.com/gexi0619"
+    icon: "sinaweibo"
+    note: "Tutorials & experiments"
+    tags: [social, cn]
+    status: "dormant"
+    weight: 3
+    new_tab: true

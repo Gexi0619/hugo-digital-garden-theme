@@ -8,12 +8,19 @@
   filter: invert(var(--invert));
 }
 
-.linktree-ping {
+.linktree-status {
   display: inline-block;
   width: 0.5rem;
   height: 0.5rem;
-  background-color: var(--blue);
   border-radius: 50%;
   margin-left: 0.3rem;
   vertical-align: middle;
+}
+
+.linktree-status-active {
+  background-color: var(--green, #28a745);
+}
+
+.linktree-status-dormant {
+  background-color: var(--gray, #adb5bd);
 }

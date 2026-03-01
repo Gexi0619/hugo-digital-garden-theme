@@ -1,47 +1,102 @@
 {{ define "main" }}
 
+{{- /* Collect all tags from linktree data */ -}}
+{{- $allTags := slice -}}
+{{- if .Site.Data.linktree.links -}}
+  {{- range .Site.Data.linktree.links -}}
+    {{- with .tags -}}
+      {{- range . -}}
+        {{- $allTags = $allTags | append (. | urlize) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $allTags = $allTags | uniq | sort -}}
+{{- end -}}
+
 <div class="page-wrapper page-wrapper--narrow">
   <div class="pt-5 pb-3">
     <h1 class="display-2 mb-4">{{ .Title }}</h1>
     <p class="bio fs-4 body-text">{{ .Summary }}</p>
   </div>
 
-  {{- if .Site.Data.linktree -}}
-  {{- if .Site.Data.linktree.links -}}
+  {{- /* Filter Buttons */ -}}
+  {{ if $allTags }}
+  <div class="mb-4">
+    <div class="btn-toolbar mb-2 bio" role="toolbar" aria-label="Tag filters">
+      <div id="filters" class="button-group">
+        <i class="fas fa-filter"></i>
+        {{ range $allTags }}
+        {{ $btnid := . | printf "iso-%s" }}
+        <input type="checkbox" class="btn-check" id="{{ $btnid }}" autocomplete="off">
+        <label class="button" for="{{ $btnid }}">{{ . }}</label>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
+
+  {{- /* Render linktree items */ -}}
+  {{ if .Site.Data.linktree.links }}
   <div class="row row-cols-1 g-2 mb-5" id="linktree-links">
-    {{- range sort .Site.Data.linktree.links "weight" -}}
-    <div class="col">
+    {{- $sorted := sort .Site.Data.linktree.links "weight" -}}
+    {{- $sorted = sort $sorted "status" -}}
+    {{- range $sorted -}}
+    {{- $classes := slice "linktree-item" -}}
+    {{- with .tags -}}
+      {{- range . -}}
+        {{- $classes = $classes | append (. | urlize | printf "iso-%s") -}}
+      {{- end -}}
+    {{- end -}}
+
+    <div class="col {{ delimit $classes " " }}">
       <div class="card h-100 top-highlight">
         <div class="card-body">
           <div class="row align-items-center justify-content-between">
-            <!-- Left: Icon + Title -->
             <div class="col-auto d-flex align-items-center gap-3">
               <img src="https://cdn.simpleicons.org/{{ .icon }}" alt="{{ .title }}" class="linktree-icon">
               <h5 class="card-title mb-0">{{ .title }}</h5>
             </div>
-            <!-- Right: Note + Ping indicator -->
             <div class="col-auto">
               <p class="card-right mb-0">
-                {{- if .note -}}
-                <span class="card-date">{{ .note }}</span>
-                {{- end -}}
-                {{- if .ping -}}
-                <span class="linktree-ping" title="Active"></span>
-                {{- end -}}
+                {{- if .note }}<span class="card-date">{{ .note }}</span>{{ end -}}
+                {{- if .status }}<span class="linktree-status linktree-status-{{ .status }}" title="{{ .status }}"></span>{{ end -}}
               </p>
             </div>
           </div>
-          <!-- Stretched link over entire card -->
-          <a href="{{ .url }}" class="stretched-link"
-             {{- if .new_tab }} target="_blank" rel="noopener"{{ end }}></a>
+          {{- if .tags }}
+          <div class="mt-3">
+            {{- range .tags }}<a href="#" class="tag-link" onclick="return false;">#{{ . }}</a>{{ end -}}
+          </div>
+          {{- end }}
+          <a href="{{ .url }}" class="stretched-link" {{ if .new_tab }}target="_blank" rel="noopener"{{ end }}></a>
         </div>
       </div>
     </div>
     {{- end -}}
   </div>
-  {{- end -}}
-  {{- end -}}
-
+  {{ end }}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var $container = $('#linktree-links');
+  if (!$container.length) return;
+
+  $container.isotope({
+    itemSelector: '.linktree-item',
+    layoutMode: 'fitRows',
+    percentPosition: true
+  });
+
+  $('#filters input').change(function() {
+    var filters = [];
+    $('#filters input:checked').each(function() {
+      filters.push('.' + this.id);
+    });
+    var selector = filters.length ? filters.join(', ') : '*';
+    $container.isotope({ filter: selector });
+  });
+});
+</script>
 
 {{ end }}
