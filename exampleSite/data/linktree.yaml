@@ -1,0 +1,33 @@
+links:
+
+  - title: "GitHub"
+    url: "https://github.com/username"
+    icon: "github"
+    note: "Open-source projects"
+    ping: true
+    weight: 1
+    new_tab: true
+
+  - title: "Instagram"
+    url: "https://instagram.com/username"
+    icon: "instagram"
+    note: "Daily life & rowing"
+    ping: false
+    weight: 2
+    new_tab: true
+
+  - title: "YouTube"
+    url: "https://youtube.com/@username"
+    icon: "youtube"
+    note: "Tutorials & experiments"
+    ping: false
+    weight: 3
+    new_tab: true
+
+  - title: "Blog"
+    url: "/posts"
+    icon: "blog"
+    note: "Long-form writing"
+    ping: false
+    weight: 4
+    new_tab: false

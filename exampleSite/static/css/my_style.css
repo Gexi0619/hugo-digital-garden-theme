@@ -1,1 +1,16 @@
 /* Custom styles go here */
+
+/* Linktree page styles */
+.linktree-icon {
+  font-size: 1.4rem;
+  width: 2rem;
+  text-align: center;
+  color: var(--dark);
+}
+
+.linktree-ping {
+  font-size: 0.5rem;
+  color: var(--blue);
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}

@@ -1,0 +1,69 @@
+{{ define "main" }}
+
+{{- /* Icon mapping from short names to FontAwesome classes */ -}}
+{{- $iconMap := dict
+  "github"    "fab fa-github"
+  "instagram" "fab fa-instagram"
+  "youtube"   "fab fa-youtube"
+  "twitter"   "fab fa-twitter"
+  "x"         "fab fa-x-twitter"
+  "linkedin"  "fab fa-linkedin-in"
+  "blog"      "fas fa-pen-to-square"
+  "email"     "fas fa-envelope"
+  "website"   "fas fa-globe"
+  "tiktok"    "fab fa-tiktok"
+  "discord"   "fab fa-discord"
+  "telegram"  "fab fa-telegram"
+  "mastodon"  "fab fa-mastodon"
+  "facebook"  "fab fa-facebook"
+  "reddit"    "fab fa-reddit"
+  "medium"    "fab fa-medium-m"
+-}}
+
+<div class="page-wrapper page-wrapper--narrow">
+  <div class="pt-5 pb-3">
+    <h1 class="display-2 mb-4">{{ .Title }}</h1>
+    <p class="bio fs-4 body-text">{{ .Summary }}</p>
+  </div>
+
+  {{- if .Site.Data.linktree -}}
+  {{- if .Site.Data.linktree.links -}}
+  <div class="row row-cols-1 g-2 mb-5" id="linktree-links">
+    {{- range sort .Site.Data.linktree.links "weight" -}}
+    <div class="col">
+      <div class="card h-100 top-highlight">
+        <div class="card-body">
+          <div class="row align-items-center justify-content-between">
+            <!-- Left: Icon + Title -->
+            <div class="col-auto d-flex align-items-center gap-3">
+              {{- /* Get icon class from map, fallback to fas fa-link */ -}}
+              {{- $iconClass := index $iconMap .icon | default "fas fa-link" -}}
+              <i class="{{ $iconClass }} linktree-icon"></i>
+              <h5 class="card-title mb-0">{{ .title }}</h5>
+            </div>
+            <!-- Right: Note + Ping indicator -->
+            <div class="col-auto">
+              <p class="card-right mb-0">
+                {{- if .note -}}
+                <span class="card-date">{{ .note }}</span>
+                {{- end -}}
+                {{- if .ping -}}
+                <i class="fas fa-circle linktree-ping" title="Active"></i>
+                {{- end -}}
+              </p>
+            </div>
+          </div>
+          <!-- Stretched link over entire card -->
+          <a href="{{ .url }}" class="stretched-link"
+             {{- if .new_tab }} target="_blank" rel="noopener"{{ end }}></a>
+        </div>
+      </div>
+    </div>
+    {{- end -}}
+  </div>
+  {{- end -}}
+  {{- end -}}
+
+</div>
+
+{{ end }}
