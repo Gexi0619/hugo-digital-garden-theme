@@ -701,6 +701,29 @@ a.tag-badge:hover {
   font-size: 1.067rem;
 }
 
+.footer-copyright a {
+  color: var(--grey);
+  text-decoration: none;
+  position: relative;
+}
+
+.footer-copyright a::after {
+  content: '';
+  position: absolute;
+  bottom: -0.15em;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: var(--blue);
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.footer-copyright a:hover::after,
+.footer-copyright a:focus::after {
+  opacity: 1;
+}
+
 /********************* Linked Header *********************/
 
 button.anchor {

@@ -1,12 +1,6 @@
 <div class="page-wrapper page-wrapper--narrow">
     <div class="footer-container">
-        <div class="footer-social-wrapper">
-            {{ range .Site.Params.Social }}
-            <a class="footer-social px-2" {{ with .rel }} rel="{{ . }}" {{ end }} href="{{ .link }}" target="_blank">
-                <img src="https://cdn.simpleicons.org/{{ .icon }}" alt="{{ .name }}" class="social-icon">
-            </a>
-            {{ end }}
-        </div>
+        <p class="footer footer-copyright"><a href="/contacts/">Contacts</a></p>
         <p class="footer footer-copyright">{{ .Site.Copyright }} {{ now.Format "2006"}} </p>
     </div>
 </div>
