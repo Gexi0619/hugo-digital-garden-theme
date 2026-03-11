@@ -142,8 +142,8 @@ copyright = "Nigalya Ponya ©"
     url = "/tags/"
     weight = 6
   [[menu.main]]
-    name = "Linktree"
-    url = "/linktree/"
+    name = "Contacts"
+    url = "/contacts/"
     weight = 7
 # ==============================================================================
 # Taxonomies

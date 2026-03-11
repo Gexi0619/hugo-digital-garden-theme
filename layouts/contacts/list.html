@@ -1,9 +1,9 @@
 {{ define "main" }}
 
-{{- /* Collect all tags from linktree data */ -}}
+{{- /* Collect all tags from contacts data */ -}}
 {{- $allTags := slice -}}
-{{- if .Site.Data.linktree.links -}}
-  {{- range .Site.Data.linktree.links -}}
+{{- if .Site.Data.contacts.links -}}
+  {{- range .Site.Data.contacts.links -}}
     {{- with .tags -}}
       {{- range . -}}
         {{- $allTags = $allTags | append (. | urlize) -}}
@@ -35,17 +35,17 @@
         </h1>
         <p class="bio fs-4 body-text">{{ .Summary }}</p>
       </div>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data={{ .Permalink }}" alt="QR Code for {{ .Title }}" class="linktree-qr" style="width: 100px; height: 100px; flex-shrink: 0; margin-left: auto;">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data={{ .Permalink }}" alt="QR Code for {{ .Title }}" class="contacts-qr" style="width: 100px; height: 100px; flex-shrink: 0; margin-left: auto;">
     </div>
   </div>
 
-  {{- /* Render linktree items */ -}}
-  {{ if .Site.Data.linktree.links }}
-  <div class="row row-cols-1 g-2 mb-5" id="linktree-links">
-    {{- $sorted := sort .Site.Data.linktree.links "weight" -}}
+  {{- /* Render contacts items */ -}}
+  {{ if .Site.Data.contacts.links }}
+  <div class="row row-cols-1 g-2 mb-5" id="contacts-links">
+    {{- $sorted := sort .Site.Data.contacts.links "weight" -}}
     {{- $sorted = sort $sorted "status" -}}
     {{- range $sorted -}}
-    {{- $classes := slice "linktree-item" -}}
+    {{- $classes := slice "contacts-item" -}}
     {{- with .tags -}}
       {{- range . -}}
         {{- $classes = $classes | append (. | urlize | printf "iso-%s") -}}
@@ -57,13 +57,13 @@
         <div class="card-body">
           <div class="row align-items-center justify-content-between">
             <div class="col-auto d-flex align-items-center gap-3">
-              <img src="https://cdn.simpleicons.org/{{ .icon }}" alt="{{ .title }}" class="linktree-icon">
+              <img src="https://cdn.simpleicons.org/{{ .icon }}" alt="{{ .title }}" class="contacts-icon">
               <h5 class="card-title mb-0">{{ .title }}</h5>
             </div>
             <div class="col-auto">
               <p class="card-right mb-0">
                 {{- if .note }}<span class="card-date">{{ .note }}</span>{{ end -}}
-                {{- if .status }}<span class="linktree-status linktree-status-{{ .status }}" title="{{ .status }}"></span>{{ end -}}
+                {{- if .status }}<span class="contacts-status contacts-status-{{ .status }}" title="{{ .status }}"></span>{{ end -}}
               </p>
             </div>
           </div>
@@ -94,11 +94,11 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var $container = $('#linktree-links');
+  var $container = $('#contacts-links');
   if (!$container.length) return;
 
   $container.isotope({
-    itemSelector: '.linktree-item',
+    itemSelector: '.contacts-item',
     layoutMode: 'fitRows',
     percentPosition: true
   });

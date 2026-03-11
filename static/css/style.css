@@ -960,16 +960,16 @@ button.anchor {
   color: var(--grey);
 }
 
-/********************* Linktree *********************/
+/********************* Contacts *********************/
 
-.linktree-icon {
+.contacts-icon {
   width: 2rem;
   height: 2rem;
   object-fit: contain;
   filter: invert(var(--invert));
 }
 
-.linktree-status {
+.contacts-status {
   display: inline-block;
   width: 0.5rem;
   height: 0.5rem;
@@ -978,10 +978,10 @@ button.anchor {
   vertical-align: middle;
 }
 
-.linktree-status-active {
+.contacts-status-active {
   background-color: var(--green, #28a745);
 }
 
-.linktree-status-dormant {
+.contacts-status-dormant {
   background-color: var(--gray, #adb5bd);
 }
